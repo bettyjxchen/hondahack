@@ -7,7 +7,7 @@ module.exports = {
     readById: readById,
     create: create,
     update: update,
-    delete: _delete
+    delete: _delete  
 }  
 
 function readAll(req, res) {
