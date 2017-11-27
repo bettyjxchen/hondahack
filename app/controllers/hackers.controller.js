@@ -8,7 +8,7 @@ module.exports = {
     create: create,
     update: update,
     delete: _delete
-}
+}  
 
 function readAll(req, res) {
     hackersService.readAll()
