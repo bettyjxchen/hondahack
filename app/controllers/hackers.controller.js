@@ -10,7 +10,7 @@ module.exports = {
     delete: _delete
 }
 
-function readAll(req, res) {
+function readAll(req,       res) {
     hackersService.readAll()
         .then(hackers => {
             const responseModel = new responses.ItemsResponse()
