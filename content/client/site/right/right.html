@@ -1,1 +1,22 @@
-<p>right sidebar here</p>
+<div ng-controller="rightBoxController as rb">
+    <div class="panel panel-inverse" style="height: 500px;">
+        <div class="panel-heading">
+            <h4 class="panel-title">Panel with Tabs</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" xui-sref="">
+                    <td>
+                        <h3 xstyle="margin-top:40px;">faq</h3>
+                    </td>
+                </tr>
+                <tr class="well" style="cursor: pointer;" xng-repeat="friend in leftCtrl.friendsList track by $index" ui-sref="">
+                    <td>
+                        <h3 xstyle="margin-top:40px;">Emergency</h3>
+                    </td>
+                </tr>
+                </tbody>
+                <table>
+        </div>
+    </div>
+</div>
