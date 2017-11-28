@@ -19,6 +19,10 @@
                 addFriend(friend)
             })
 
+            // $rootScope.$on('addParking', (e, parkingArray) => {
+            //     addParking(parkingArray)
+            // })
+
             $rootScope.$on('deleteFriend', (e, index) => {
                 deleteFriend(index)
             })
@@ -171,7 +175,7 @@
                     latitude: 34.0413606,
                     longitude: -118.2697771
                 },
-                zoom: 12,
+                zoom: 10,
                 options: {
                     scrollwheel: false,
                     streetViewControl: false,
@@ -221,7 +225,11 @@
         function addFriend(friend) {
             friend.options.icon = {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 5
+                fillColor: 'black',
+                fillOpacity: 0.8,                                    
+                scale: 8,
+                strokeColor: 'white',
+                strokeWeight: 3
             }
             vm.markers.push(friend)
             console.log(vm.markers)
