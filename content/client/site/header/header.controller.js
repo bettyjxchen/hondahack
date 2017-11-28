@@ -4,9 +4,9 @@
     angular.module('client.site')
         .controller('headerController', HeaderController)
     
-    HeaderController.$inject = ['$log']
+    HeaderController.$inject = ['$log', '$rootScope']
 
-    function HeaderController($log) {
+    function HeaderController($log, $rootScope) {
         
         let vm = this
         vm.currentTime = null

@@ -4,9 +4,9 @@
     angular.module('client.site')
         .controller('footerController', FooterController)
 
-    FooterController.$inject = ['$log', '$uibModal']
+    FooterController.$inject = ['$log', '$uibModal', '$rootScope']
 
-    function FooterController($log, $uibModal) {
+    function FooterController($log, $uibModal, $rootScope) {
         var vm = this
         vm.$uibModal = $uibModal
         vm.openModal = _openModal
