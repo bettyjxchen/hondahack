@@ -209,14 +209,7 @@
                     styles: styleArrays
                 }
             }
-            var goldStar = {
-                path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
-                fillColor: 'yellow',
-                fillOpacity: 0.8,
-                scale: 1,
-                strokeColor: 'gold',
-                strokeWeight: 14
-            };
+           
             uiGmapIsReady.promise()
                 .then(instances => {
                     console.log(instances[0].map);
@@ -236,8 +229,8 @@
                                 labelContent: item.name,
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
-                                    fillColor: 'black',
-                                    fillOpacity: 0.8,
+                                    fillColor: '#2AF6FF',
+                                    fillOpacity: 0.8,                                    
                                     scale: 8,
                                     strokeColor: 'white',
                                     strokeWeight: 3
@@ -251,8 +244,8 @@
         function addFriend(friend) {
             friend.options.icon = {
                 path: google.maps.SymbolPath.CIRCLE,
-                fillColor: 'black',
-                fillOpacity: 0.8,
+                fillColor: '#2AF6FF',
+                fillOpacity: 0.8,                                    
                 scale: 8,
                 strokeColor: 'white',
                 strokeWeight: 3
