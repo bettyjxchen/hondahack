@@ -3,10 +3,17 @@
         <div class="panel-heading">
             <div ng-hide="leftCtrl.profileView" class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button type='button' class='btn btn-sm btn-success' style='margin-top:10px;'>+</button>
+                    <button ng-click="leftCtrl.addMore = true" type='button' class='btn btn-sm btn-success' style='margin-top:10px;'>+</button>
                 </div>
             </div>
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
+                <div class="form-group" ng-show="leftCtrl.addMore">
+                    <label>Friend's Name</label><br/>
+                    <input class="form-control" name="name" type="text" ng-value="leftCtrl.item.name"/><br/>
+                    <label>License Number</label><br/>
+                    <input class="form-control" name="number" ng-value="leftCtrl.item.licenseNum"/><br/>
+                    <button ng-click="leftCtrl.addMore = false" class="btn btn-sm btn-success">Add</button>
+                </div>
 
             <div ng-show="leftCtrl.profileView">
                 <span>

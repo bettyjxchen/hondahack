@@ -32,7 +32,7 @@
     <div class="panel panel-inverse">
     <div class="panel-heading">
         <h3 class="panel-title">
-            <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" 
+            <a ng-click="sideCtrl.emergencyActive = false && sideCtrl.frenCallActive = false" 
             class="accordion-toggle accordion-toggle-styled collapsed" 
             data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
                 <i class="fa fa-plus-circle pull-right"></i>
@@ -47,7 +47,7 @@
             <div class="space-30"></div>
 
             <button class="btn btn-sm btn-primary" ng-click="sideCtrl.frenCallActive = true">Call Emergency Friend</button></p>
-            <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
+            <div   ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
         </div>
     </div>
     </div>
@@ -63,7 +63,7 @@
                 </a>
             </h3>
         </div>
-    <div id="collapsethredd" class="panel-collapse collapse">
+    <div id="collapsethree" class="panel-collapse collapse">
             <div class="panel-body" ng-repeat="name in sideCtrl.parking">
                 <p>StreetName: {{name.street}}</p>>
             </div>

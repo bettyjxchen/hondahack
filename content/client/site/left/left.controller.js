@@ -14,7 +14,12 @@
         vm.deleteFriend = _deleteFriend
         vm.profileView = false
         vm.profileMode = _profileMode
+        vm.addFriend = _addFriend();
         vm.profile = {}
+        vm.item = {
+                name : "Jerry",
+                licenseNum : "F3526718"
+            };
 
         init()
         function init() {
@@ -54,5 +59,8 @@
             }
         }
 
+        function _addFriend(){
+            vm.addMore = false;
+        }
     }
 })();

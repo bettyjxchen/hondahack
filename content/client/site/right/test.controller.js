@@ -64,11 +64,8 @@
         }
 
         function _toggletwo() {
-            vm.hide = !vm.hide
-           if (!vm.isOpen){
                 vm.emergencyActive = false;
                 vm.frenCallActive = false;
-            }
         }
     }
-})()
+})();
