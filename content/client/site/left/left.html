@@ -243,9 +243,7 @@
                             <input type="text" name="reply" ng-model="dtlCtrl.formData.reply" rows="5" class="form-control bg-white" placeholder="Enter message"
                                 required>
                             <span class="input-group-btn">
-                                <button type="submit" class="btn btn-theme pull-right" ng-disabled="dtlCtrl.replyForm.reply.$invalid">Reply
-                                    <i class="fa fa-paper-plane"></i>
-                                </button>
+                                <buttons class="btn btn-theme pull-right" ng-click="((leftCtrl.openChat = false) && (leftCtrl.profileView = true))" >Back</button>
                             </span>
                         </div>
                     </form>
