@@ -13,6 +13,7 @@
         vm.results = []
         vm.collisionData
         vm.collisionOverlay = _collisionOverlay
+        var styleArrays
 
         init()
 
@@ -30,7 +31,7 @@
                 { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
                 { "LMD_MP_Latitude": "34.0839", "LMD_MP_Longitude": "-118.2000", "name": "lou" },
             ]
-            var styleArrays = [
+             styleArrays = [
                 {
                     "featureType": "all",
                     "elementType": "labels.text.fill",
@@ -179,12 +180,7 @@
                     streetViewControl: false,
                     draggable: true,
                     styles: styleArrays
-                },
-                visualization:{
-                    HeatmapLayer:{
-                        data:vm.collisionData
-                        }
-                    }
+                }
             }
             var goldStar = {
                 path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
@@ -235,7 +231,7 @@
                             let longMin = -118.309175
                             let latMax = 34.069944
                             let latMin = 34.011244
-                        if(crashData[i].geometry.coordinates.length > 100){
+                        if(crashData[i].geometry.coordinates.length > 15){
                             if(long < longMax && long > longMin && lat < latMax && lat > latMin){
                                 crashDataArray.push(new google.maps.LatLng(lat, long))
                             }
@@ -249,7 +245,25 @@
 
         }
         function _collisionOverlay(){
-            heatmap.setMap(vm.map)
+            var downtown = new google.maps.LatLng(34.0413606, -118.2697771);
+            
+            let map = new google.maps.Map(document.getElementById('map'), {
+              center: downtown,
+              zoom: 12,
+              options: {
+                scrollwheel: false,
+                streetViewControl: false,
+                draggable: true,
+                styles: styleArrays
+            },
+              mapTypeId: 'satellite'
+            });
+            
+            var heatmap = new google.maps.visualization.HeatmapLayer({
+              data: vm.collisionData
+            });
+            console.log(map)
+            heatmap.setMap(map)
             
         }
 
