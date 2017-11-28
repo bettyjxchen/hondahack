@@ -19,7 +19,7 @@
                 {
                     name: "kenny",
                     profilePic: "https://www.shareicon.net/data/128x128/2015/11/12/163575_man_256x256.png",
-                    id: Date.now(),
+                    id: 1,
                     coords: {
                         latitude: 34.0413606,
                         longitude: -118.2697771
@@ -33,7 +33,7 @@
                 {
                     name: "cory",
                     profilePic: "https://blzgdapipro-a.akamaihd.net/game/unlocks/0x02500000000008E8.png",
-                    id: Date.now(),
+                    id: 2,
                     coords: {
                         latitude: 34.0039,
                         longitude: -118.2301
