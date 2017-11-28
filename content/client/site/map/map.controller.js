@@ -38,10 +38,10 @@
                             labelContent: item.CityName,
                             icon: {
                                 path: google.maps.SymbolPath.CIRCLE,
-                                fillColor: 'black',
+                                fillColor: 'red',
                                 fillOpacity: 0.8,
                                 scale: 6,
-                                strokeColor: 'white',
+                                strokeColor: 'black',
                                 strokeWeight: 3
                             }
                         }
