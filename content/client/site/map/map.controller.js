@@ -4,9 +4,9 @@
     angular.module('client.site')
         .controller('mapController', MapControllerFunction)
 
-    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady']
+    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady', '$rootScope']
 
-    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady) {
+    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady, $rootScope) {
         var vm = this
         vm.markers = []
         vm.map = {}
@@ -15,8 +15,11 @@
         init()
 
         function init() {
+            $rootScope.$on('addFriend', (e, friend) => {
+                addFriend(friend)
+            })
+
             vm.results = [
-                { "LMD_MP_Latitude": "34.0413606", "LMD_MP_Longitude": "-118.2697771", "name": "terry" },
                 { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "pam" },
                 { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
                 { "LMD_MP_Latitude": "34.0839", "LMD_MP_Longitude": "-118.2000", "name": "lou" },
@@ -52,13 +55,24 @@
                                 labelClass: 'marker_labels',
                                 labelAnchor: '12 60',
                                 labelContent: item.name,
-                                icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-                               
+                                icon: {
+                                    path: google.maps.SymbolPath.CIRCLE,
+                                    scale: 5
+                                },
                             }
-                        });
-                    });
-                });
+                        })
+                    })
+                })
         }
+
+        function addFriend(friend) {
+            friend.options.icon = {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 5
+            }
+            vm.markers.push(friend)
+        }
+
 
     }
 })();
