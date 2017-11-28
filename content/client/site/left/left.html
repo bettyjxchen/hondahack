@@ -9,10 +9,10 @@
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
                 <div class="form-group" ng-show="leftCtrl.addMore">
                     <label>Friend's Name</label><br/>
-                    <input class="form-control" name="name" type="text" ng-value="leftCtrl.item.name"/><br/>
+                    <input class="form-control" name="name" type="text" ng-model="leftCtrl.item.name"/><br/>
                     <label>License Number</label><br/>
-                    <input class="form-control" name="number" ng-value="leftCtrl.item.licenseNum"/><br/>
-                    <button ng-click="leftCtrl.addMore = false" class="btn btn-sm btn-success">Add</button>
+                    <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum"/><br/>
+                    <button ng-click="leftCtrl.addMore = false; leftCtrl.add()" class="btn btn-sm btn-success">Add</button>
                 </div>
 
             <div ng-show="leftCtrl.profileView">

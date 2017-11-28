@@ -14,12 +14,9 @@
         vm.deleteFriend = _deleteFriend
         vm.profileView = false
         vm.profileMode = _profileMode
-        vm.addFriend = _addFriend();
+        vm.add = _add();
         vm.profile = {}
-        vm.item = {
-                name : "Jerry",
-                licenseNum : "F3526718"
-            };
+        vm.item = {};
 
         init()
         function init() {
@@ -57,10 +54,18 @@
                     vm.profile.driveStatus = 'Park',
                     vm.profile.panicMode = 'Off'
             }
+            else if (friend.name === 'jerry') {
+                vm.profile = friend,
+                    vm.profile.odometer = 80000,
+                    vm.profile.range = '20 miles',
+                    vm.profile.lockStatus = 'locked',
+                    vm.profile.driveStatus = 'Park',
+                    vm.profile.panicMode = 'Off'
+            }
         }
 
-        function _addFriend(){
-            vm.addMore = false;
+        function _add(){
+            console.log(vm.item);
         }
     }
 })();
