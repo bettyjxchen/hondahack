@@ -1,5 +1,5 @@
 <div ng-controller="leftBoxController as leftCtrl">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="height:700px;">
         <div class="panel-heading">
             <div class='btn-toolbar pull-right'>
                 <div class='btn-group'>
@@ -10,7 +10,7 @@
         </div>
         <div class="panel-body">
             <table class="table table-hover">
-                    <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index">
+                    <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" ng-click="leftCtrl.profileView(friend)">
                         <td><img style="width:65px; height:65px;"ng-src="{{friend.profilePic}}"></td>
                         <td><h3 xstyle="margin-top:40px;">{{friend.name}}</h3></td>
                         <td><button ng-click="leftCtrl.addFriend(friend)" class="btn btn-lg"  xstyle='margin-top:20px; width:60px; height:80px;'>+</button></td>
