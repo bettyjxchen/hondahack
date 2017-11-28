@@ -1,0 +1,26 @@
+<div ng-controller="mapController as ctrl">
+    <p>
+        <strong>This is the map section</strong>
+    </p>
+
+    <div class="angular-google-map-container">
+        <ui-gmap-google-map ng-if="ctrl.map.center" center="ctrl.map.center" zoom='ctrl.map.zoom' options='ctrl.map.options' draggable="true"
+            refresh="true">
+
+            <ui-gmap-markers style="color: #eb3a44" models="ctrl.markers" coords="'coords'" options="'options'">
+            </ui-gmap-markers>
+
+        </ui-gmap-google-map>
+    </div>
+
+    <!-- <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDV8CE-6bAiubBlN6ZbEkvdVesz21QjNKA
+      &q=Space+Needle,Seattle+WA" allowfullscreen>
+    </iframe> -->
+
+    <!-- <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/directions
+    ?key=AIzaSyDV8CE-6bAiubBlN6ZbEkvdVesz21QjNKA
+    &origin=Oslo+Norway
+    &destination=Telemark+Norway
+    &avoid=tolls|highways" allowfullscreen></iframe> -->
+
+</div>
