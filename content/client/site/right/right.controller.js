@@ -83,6 +83,11 @@
                 }
             }
 
+            function getAllParking() {
+                debugger
+                parkingRideService.readAll()
+                    .then(data => console.log(data));
+            }
         }
 
             function _getAllParking() {

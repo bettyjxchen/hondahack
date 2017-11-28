@@ -4,13 +4,16 @@
     angular.module('client.site')
         .controller('mapController', MapControllerFunction)
 
-    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady', '$rootScope']
+    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady', '$rootScope','$http']
 
-    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady, $rootScope) {
+    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady, $rootScope, $http) {
         var vm = this
         vm.markers = []
         vm.map = {}
         vm.results = []
+        vm.collisionData
+        vm.collisionOverlay = _collisionOverlay
+        var styleArrays
 
         init()
 
@@ -57,7 +60,7 @@
                 { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "kenny" },
               
             ]
-            var styleArrays = [
+             styleArrays = [
                 {
                     "featureType": "all",
                     "elementType": "labels.text.fill",
@@ -238,6 +241,50 @@
                         })
                     })
                 })
+                $http.get('http://geohub.lacity.org/datasets/4ba1b8fa8d8946348b29261045298a88_0.geojson')
+                .then(data=>{
+                    let crashData=data.data.features
+                    let crashDataArray =[]
+                    for(var i=0;i<crashData.length;i++){
+                        for(var j=0; j < crashData[i].geometry.coordinates.length;j++){
+                            let long = crashData[i].geometry.coordinates[j][0]
+                            let lat = crashData[i].geometry.coordinates[j][1]
+                            let longMax = -118.229395
+                            let longMin = -118.309175
+                            let latMax = 34.069944
+                            let latMin = 34.011244
+                       
+                            if(long < longMax && long > longMin && lat < latMax && lat > latMin){
+                                crashDataArray.push(new google.maps.LatLng(lat, long))
+                            }
+
+                        }
+                    }
+
+                    vm.collisionData =  crashDataArray
+                })
+
+        }
+        function _collisionOverlay(){
+            var downtown = new google.maps.LatLng(34.0413606, -118.2697771);
+            
+            let map = new google.maps.Map(document.getElementById('map'), {
+              center: downtown,
+              zoom: 14,
+              options: {
+                scrollwheel: false,
+                streetViewControl: false,
+                draggable: true,
+                styles: styleArrays
+            }
+            
+            });
+            
+            var heatmap = new google.maps.visualization.HeatmapLayer({
+              data: vm.collisionData
+            });
+            heatmap.setMap(map)
+            
         }
 
         function addFriend(friend) {

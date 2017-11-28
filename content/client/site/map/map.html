@@ -1,6 +1,9 @@
 <div ng-controller="mapController as ctrl">
-    <div class="angular-google-map-container">
-        <ui-gmap-google-map ng-if="ctrl.map.center" center="ctrl.map.center" zoom='ctrl.map.zoom' options='ctrl.map.options' draggable="true"
+    <div class="angular-google-map-container" id="map">
+        <div align="right">
+            <a href="#" ng-click="ctrl.collisionOverlay()">Heavy Colliosion Spots in this Area</a>
+        </div>
+        <ui-gmap-google-map  ng-if="ctrl.map.center" center="ctrl.map.center" zoom='ctrl.map.zoom' options='ctrl.map.options' draggable="true"
             refresh="true">
 
             <ui-gmap-markers models="ctrl.markers" coords="'coords'" options="'options'">

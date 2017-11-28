@@ -10,7 +10,8 @@
     function uiGmapGoogleMapApiProviderConfig (GoogleMapApiProviders) {
         GoogleMapApiProviders.configure({
             key: 'AIzaSyDX7riYj5lxzz_eINvXGLPPZQrshCLlBoI',
-            v: '3.29'
+            v: '3.29',
+            libraries: 'visualization'
         })
     }
 })();
