@@ -19,6 +19,10 @@
                 addFriend(friend)
             })
 
+            // $rootScope.$on('addParking', (e, parkingArray) => {
+            //     addParking(parkingArray)
+            // })
+
             $rootScope.$on('deleteFriend', (e, index) => {
                 deleteFriend(index)
             })

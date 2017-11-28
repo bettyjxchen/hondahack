@@ -47,8 +47,8 @@
             ]
 
             return $q.resolve(friendsArray)
-                .then(xhrSuccess)
                 .catch(onError)
+       
         }
 
         function readById(id) {
