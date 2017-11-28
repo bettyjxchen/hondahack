@@ -52,6 +52,24 @@
     </div>
     </div>
 </div>
+
+<div class="panel panel-inverse">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle accordion-toggle-styled collapsed" 
+                data-toggle="collapse" data-parent="#accordion" href="#collapsethree">
+                    <i class="fa fa-plus-circle pull-right"></i>
+                    Available parking
+                </a>
+            </h3>
+        </div>
+    <div id="collapsethredd" class="panel-collapse collapse">
+            <div class="panel-body" ng-repeat="name in sideCtrl.parking">
+                <p>StreetName: {{name.street}}</p>>
+            </div>
+        </div>
+        </div>
+    </div>
 <!--<div ng-controller="rightBoxController as rb">
     <div class="panel panel-inverse" style="height: 500px;">
         <div class="panel-heading">
