@@ -9,7 +9,9 @@
     <div class="panel panel-inverse">
     <div class="panel-heading">
             <h3 class="panel-title">
-                <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseone">
+                <a ng-click="sideCtrl.toggle() && !sideCtrl.isOpen" 
+                class="accordion-toggle accordion-toggle-styled collapsed" 
+                data-toggle="collapse" data-parent="#accordion" href="#collapseone">
                     <i class="fa fa-plus-circle pull-right"></i>
                     Emergency
                 </a>
@@ -17,10 +19,11 @@
         </div>
     <div id="collapseone" class="panel-collapse collapse">
             <div class="panel-body">
-                <button type="btn btn-lg btn-success" ng-click="sideCtrl.fuelMsg()">Fuel Message</a></button><br/>
-                <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel essage was sent successfully.</div>
+                <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a></button><br/>
+                <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel message was sent successfully.</div>
+                
                 <div class="space-20"></div>
-                <button type="btn btn-lg btn-success" ng-click="sideCtrl.lostMsg()">Lost Message</a></button>
+                <button class="btn btn-sm btn-white" ng-click="sideCtrl.lostMsg()">Lost Message</a></button>
                 <div ng-show="sideCtrl.isLost" style="color:#3A89BD">Emergency lost message was sent successfully.</div>
             </div>
         </div>
@@ -29,7 +32,9 @@
     <div class="panel panel-inverse">
     <div class="panel-heading">
         <h3 class="panel-title">
-            <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
+            <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" 
+            class="accordion-toggle accordion-toggle-styled collapsed" 
+            data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
                 <i class="fa fa-plus-circle pull-right"></i>
                 Emergency Call
             </a>
@@ -37,11 +42,11 @@
     </div>
 <div id="collapsetwo" class="panel-collapse collapse">
         <div class="panel-body">
-            <button type="btn btn-danger" ng-click="sideCtrl.emergency()">Call 911</button></p>
+            <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button></p>
             <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">calling 911...</div>
             <div class="space-30"></div>
-            <p style="color:red">Your car is running out of gas</p>
-            <button type="btn btn-primary" ng-click="sideCtrl.callFriend()">Call Emergency Friend</button></p>
+
+            <button class="btn btn-sm btn-primary" ng-click="sideCtrl.frenCallActive = true">Call Emergency Friend</button></p>
             <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
         </div>
     </div>

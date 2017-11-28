@@ -11,8 +11,12 @@
         vm.emergencyMsg = _emergencyMsg;
         vm.fuelMsg = _fuelMsg;
         vm.lostMsg = _lostMsg;
-        vm.emergency = _emergency;
-        vm.callFriend = _callFriend;
+        //vm.emergency = _emergency;
+        //vm.callFriend = _callFriend;
+        vm.toggle = _toggle;
+        vm.toggletwo = _toggletwo;
+        vm.emergencyActive = false;
+        vm.frenCallActive = false;
 
         vm.airbags = {
             isActive: true,
@@ -44,11 +48,27 @@
         function _lostMsg(){
             vm.isLost = true;
         }
-        function _emergency(){
-            vm.emergencyActive = true;
+        // function _emergency(){
+        //     vm.emergencyActive = true;
+        // }
+        // function _callFriend(){
+        //     vm.frenCallActive = true;
+        // }
+
+        function _toggle() {
+            vm.isOpen = !vm.isOpen
+            if (!vm.isOpen) {
+                vm.isActive = false;
+                vm.isLost = false;
+            }
         }
-        function _callFriend(){
-            vm.frenCallActive = true;
+
+        function _toggletwo() {
+            vm.hide = !vm.hide
+           if (!vm.isOpen){
+                vm.emergencyActive = false;
+                vm.frenCallActive = false;
+            }
         }
     }
 })()
