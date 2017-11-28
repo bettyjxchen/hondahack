@@ -1,9 +1,9 @@
 <div ng-controller="leftBoxController as leftCtrl">
-    <div class="panel">
-        <div class="page-header">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
             <div class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button type='button' class='btn'>+</button>
+                    <button type='button' class='btn btn-lg btn-info' xstyle='margin-top:10px;'>+</button>
                 </div>
             </div>
             <h2>Friends</h2>
@@ -13,8 +13,8 @@
                 <tbody>
                     <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index">
                         <td><img ng-src="{{friend.profilePic}}"></td>
-                        <td><h1 style="margin-top:40px;">{{friend.name}}</h1></td>
-                        <td><button class="btn btn-default"  style='margin-top:20px; width:60px; height:80px;'>+</button></td>
+                        <td><h1 xstyle="margin-top:40px;">{{friend.name}}</h1></td>
+                        <td><button class="btn btn-lg"  xstyle='margin-top:20px; width:60px; height:80px;'>+</button></td>
                     </tr>
                 </tbody>
             <table>
