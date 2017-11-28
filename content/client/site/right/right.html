@@ -1,94 +1,84 @@
-<div ng-controller="rightBoxController as rb">
-    <div class="panel panel-inverse">
+<div ng-controller="rightBoxController as sideCtrl">
+    <div class="panel panel-default" style="height:700px;">
         <div class="panel-heading">
-            <h4 class="panel-title">Panel with Tabs</h4>
+            <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+            <!-- Start of 1 -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a ng-click="sideCtrl.toggle() && !sideCtrl.isOpen" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
+                            data-parent="#accordion" href="#collapseone">
+                            <i class="fa fa-plus-circle pull-right"></i>
+                            Emergency Message
+                        </a>
+                    </h3>
+                </div>
+                <div id="collapseone" class="panel-collapse collapse">
+                    <div class="panel-body bg-silver">
+                        <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a>
+                        </button>
+                        <br/>
+                        <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel message was sent successfully.</div>
+                        <br>
+                        <div class="space-20"></div>
+                        <button class="btn btn-sm btn-white" ng-click="sideCtrl.lostMsg()">Lost Message</a>
+                        </button>
+                        <div ng-show="sideCtrl.isLost" style="color:#3A89BD">Emergency lost message was sent successfully.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start of 2 -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
+                            data-parent="#accordion" href="#collapsetwo">
+                            <i class="fa fa-plus-circle pull-right"></i>
+                            Emergency Call
+                        </a>
+                    </h3>
+                </div>
+                <div id="collapsetwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button>
+                        <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.emergencyActive = false; sideCtrl.frenCallActive = false">Cancel</button>
+                        <br>
+                        <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">
+                            <span>Alerting officials nearby....</span>
+                        </div>
+
+                        <br>
+                        <div class="space-30"></div>
+
+                        <button class="btn btn-sm btn-danger" ng-click="sideCtrl.frenCallActive = true"> Call Friend</button>
+                        <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">Dialing Ed...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Start of 3 -->
+            <div class="panel panel-inverse">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsethree">
+                            <i class="fa fa-plus-circle pull-right"></i>
+                            Parking
+                        </a>
+                    </h3>
+                </div>
+                <div id="collapsethree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <button class="btn btn-sm btn-default" ng-click="sideCtrl.getAllParking()">Search Nearby Parking</button>
+                        <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false">Clear</button>
+                        </br>
+                        <div ng-show="sideCtrl.isParkingShown" style="color:#3A89BD">Retrieving locations...</div>
+                        <div class="space-30"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div ng-controller="sideNavController as sideCtrl">
-    <div class="panel panel-inverse">
-    <div class="panel-heading">
-            <h3 class="panel-title">
-                <a ng-click="sideCtrl.toggle() && !sideCtrl.isOpen" 
-                class="accordion-toggle accordion-toggle-styled collapsed" 
-                data-toggle="collapse" data-parent="#accordion" href="#collapseone">
-                    <i class="fa fa-plus-circle pull-right"></i>
-                    Emergency
-                </a>
-            </h3>
-        </div>
-    <div id="collapseone" class="panel-collapse collapse">
-            <div class="panel-body">
-                <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a></button><br/>
-                <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel message was sent successfully.</div>
-                
-                <div class="space-20"></div>
-                <button class="btn btn-sm btn-white" ng-click="sideCtrl.lostMsg()">Lost Message</a></button>
-                <div ng-show="sideCtrl.isLost" style="color:#3A89BD">Emergency lost message was sent successfully.</div>
-            </div>
-        </div>
-        </div>
-    </div>
-    <div class="panel panel-inverse">
-    <div class="panel-heading">
-        <h3 class="panel-title">
-            <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" 
-            class="accordion-toggle accordion-toggle-styled collapsed" 
-            data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
-                <i class="fa fa-plus-circle pull-right"></i>
-                Emergency Call
-            </a>
-        </h3>
-    </div>
-<div id="collapsetwo" class="panel-collapse collapse">
-        <div class="panel-body">
-            <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button></p>
-            <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">calling 911...</div>
-            <div class="space-30"></div>
-
-            <button class="btn btn-sm btn-primary" ng-click="sideCtrl.frenCallActive = true">Call Emergency Friend</button></p>
-            <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
-        </div>
-    </div>
-    </div>
-</div>
-
-<div class="panel panel-inverse">
-        <div class="panel-heading">
-            <h3 class="panel-title">
-                <a class="accordion-toggle accordion-toggle-styled collapsed" 
-                data-toggle="collapse" data-parent="#accordion" href="#collapsethree">
-                    <i class="fa fa-plus-circle pull-right"></i>
-                    Available parking
-                </a>
-            </h3>
-        </div>
-    <div id="collapsethredd" class="panel-collapse collapse">
-            <div class="panel-body" ng-repeat="name in sideCtrl.parking">
-                <p>StreetName: {{name.street}}</p>>
-            </div>
-        </div>
-        </div>
-    </div>
-<!--<div ng-controller="rightBoxController as rb">
-    <div class="panel panel-inverse" style="height: 500px;">
-        <div class="panel-heading">
-            <h4 class="panel-title">Panel with Tabs</h4>
-        </div>
-        <div class="panel-body">
-            <table class="table table-hover">
-                <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" xui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">faq</h3>
-                    </td>
-                </tr>
-                <tr class="well" style="cursor: pointer;" xng-repeat="friend in leftCtrl.friendsList track by $index" ui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">Emergency</h3>
-                    </td>
-                </tr>
-                </tbody>
-                <table>
-        </div>
-    </div>
-</div> -->
