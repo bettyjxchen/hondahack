@@ -159,7 +159,6 @@
                 }
             ]
             return $q.resolve(parkingArray)
-                .then(xhrSuccess)
                 .catch(onError)
         }
 

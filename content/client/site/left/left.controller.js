@@ -20,6 +20,7 @@
         function init() {
             friendService.readAll()
                 .then(response => {
+                    $log.log('testfriend')
                     $log.log(response)
                     vm.friendsList = response
                 })
