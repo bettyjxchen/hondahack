@@ -5,22 +5,22 @@
         .controller('leftBoxController', LeftBoxController)
         .directive('setModelOnChange', SetModelOnChange)
 
-        SetModelOnChange.$inject = []
-        function SetModelOnChange() {
-            return {
-                require: "ngModel",
-                link: function postLink(scope, elem, attrs, ngModel) {
-                    scope.$on("SMOC.removeImageToUploadDir", (e) => {
-                        elem.val(null)
-                    })
-                    elem.on("change", (e) => {
-                        console.log("on change (from directive)", e);
-                        var files = elem[0].files;
-                        ngModel.$setViewValue(files)
-                    })
-                }
+    SetModelOnChange.$inject = []
+    function SetModelOnChange() {
+        return {
+            require: "ngModel",
+            link: function postLink(scope, elem, attrs, ngModel) {
+                scope.$on("SMOC.removeImageToUploadDir", (e) => {
+                    elem.val(null)
+                })
+                elem.on("change", (e) => {
+                    console.log("on change (from directive)", e);
+                    var files = elem[0].files;
+                    ngModel.$setViewValue(files)
+                })
             }
         }
+    }
 
     LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$timeout', '$anchorScroll', '$location', '$uibModal']
 
@@ -29,6 +29,11 @@
         let vm = this
 
         vm.friendsList = null
+        vm.changeButtons = {
+            0: false,
+            1: false,
+            2: false
+        }
         vm.hidePlus = false
         vm.addFriend = _addFriend
         vm.deleteFriend = _deleteFriend
@@ -49,15 +54,43 @@
                 })
         }
 
+        // function _addFriend(friend) {
+        //     $rootScope.$broadcast('addFriend', friend)
+        // }
+
+
         function _addFriend(friend) {
-            $rootScope.$broadcast('addFriend', friend)
+            // gritterService.success("Request Sent", false).then(response => response)
+            $timeout(function () {
+                $rootScope.$broadcast('addFriend', friend)
+                _buttonChanger(friend)
+            }, 2500);
+
         }
+
+        function _buttonChanger(friend) {
+            vm.changeButtons[vm.friendsList.indexOf(friend)] = true
+            //console.log(vm.friendsList.indexOf(friend))
+            //vm.buttonValue = vm.friendsList.indexOf(friend)
+
+        }
+
+        // function _deleteFriend(friend) {
+        //     $rootScope.$broadcast('deleteFriend', friend)
+
+        // }
 
         function _deleteFriend(friend) {
             $rootScope.$broadcast('deleteFriend', friend)
+            _reverseButtons(friend)
 
         }
 
+
+        function _reverseButtons(friend) {
+            vm.changeButtons[vm.friendsList.indexOf(friend)] = false
+        }
+        
         function _profileMode(friend) {
             console.log(friend)
             if (friend.name === "Ed") {

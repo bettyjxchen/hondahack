@@ -17,7 +17,7 @@
                 <br/>
                 <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum" />
                 <br/>
-              
+
                 <!-- <button class="btn btn-sm btn-white pull-right" ng-click="leftCtrl.indexMode = true">x</button> -->
 
                 <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-warning pull-right">Add</button>
@@ -50,11 +50,15 @@
                         <h5 xstyle="margin-top:40px;">{{friend.name}}</h5>
                     </td>
                     <td>
-                        <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
+
+                        <button ng-show="leftCtrl.changeButtons[$index]" class="btn btn-md btn-success">
+                            <i class="fa fa-check"></i>
+                        </button>
+                        <button ng-hide="leftCtrl.changeButtons[$index]" ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
                             +
                         </button>
 
-                        <button ng-click="leftCtrl.deleteFriend(friend)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
+                        <button ng-show="leftCtrl.changeButtons[$index]" ng-click="leftCtrl.deleteFriend(friend)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
                             - </button>
                     </td>
                 </tr>
@@ -208,7 +212,7 @@
                                     <img alt="" src="assets/img/user-13.jpg" />
                                 </a>
                                 <div class="message">
-                                    Totally bro, totally!!! 
+                                    Totally bro, totally!!!
                                 </div>
                             </li>
                             <li class="left">
@@ -243,7 +247,7 @@
                             <input type="text" name="reply" ng-model="dtlCtrl.formData.reply" rows="5" class="form-control bg-white" placeholder="Enter message"
                                 required>
                             <span class="input-group-btn">
-                                <buttons class="btn btn-theme pull-right" ng-click="((leftCtrl.openChat = false) && (leftCtrl.profileView = true))" >Back</button>
+                                <buttons class="btn btn-theme pull-right" ng-click="((leftCtrl.openChat = false) && (leftCtrl.profileView = true))">Back</button>
                             </span>
                         </div>
                     </form>
