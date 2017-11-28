@@ -40,7 +40,7 @@
     ];
 
     function RouteConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-        //$urlRouterProvider.otherwise('/hackers/list');
+        $urlRouterProvider.otherwise('/HondAssist/home');
         $locationProvider.html5Mode(true);
     }
 })();
