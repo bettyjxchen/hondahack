@@ -32,9 +32,37 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    <div class="panel panel-inverse">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a ng-click="sideCtrl.emergencyActive = false && sideCtrl.frenCallActive = false" 
+            class="accordion-toggle accordion-toggle-styled collapsed" 
+            data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
+                <i class="fa fa-plus-circle pull-right"></i>
+                Emergency Call
+            </a>
+        </h3>
+    </div>
+<div id="collapsetwo" class="panel-collapse collapse">
+        <div class="panel-body">
+            <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button></p>
+            <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">calling 911...</div>
+            <div class="space-30"></div>
+
+            <button class="btn btn-sm btn-primary" ng-click="sideCtrl.frenCallActive = true">Call Emergency Friend</button></p>
+            <div   ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="panel panel-inverse">
+=======
 
     <!-- Start of 2 -->
     <div class="panel panel-inverse">
+>>>>>>> master
         <div class="panel-heading">
             <h3 class="panel-title">
                 <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
@@ -44,6 +72,11 @@
                 </a>
             </h3>
         </div>
+<<<<<<< HEAD
+    <div id="collapsethree" class="panel-collapse collapse">
+            <div class="panel-body" ng-repeat="name in sideCtrl.parking">
+                <p>StreetName: {{name.street}}</p>>
+=======
         <div id="collapsetwo" class="panel-collapse collapse">
             <div class="panel-body">
                 <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button>
@@ -58,6 +91,7 @@
 
                 <button class="btn btn-sm btn-danger" ng-click="sideCtrl.frenCallActive = true"> Call Friend</button>
                 <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">Dialing kenny...</div>
+>>>>>>> master
             </div>
         </div>
     </div>

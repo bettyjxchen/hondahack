@@ -43,6 +43,20 @@
                         labelAnchor: '12 60',
                         labelContent: 'cory',
                     }
+                },
+                {
+                    name: "jerry",
+                    profilePic: "https://blzgdapipro-a.akamaihd.net/game/unlocks/0x02500000000008E8.png",
+                    id: Date.now(),
+                    coords: {
+                        latitude: 24.0039,
+                        longitude: -118.2301
+                    },
+                    options: {
+                        labelClass: 'marker_labels',
+                        labelAnchor: '12 60',
+                        labelContent: 'jerry',
+                    }
                 }
             ]
 
