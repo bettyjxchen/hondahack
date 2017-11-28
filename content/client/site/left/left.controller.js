@@ -21,7 +21,7 @@
                 }
             }
         }
-            
+
     LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$timeout', '$anchorScroll', '$location', '$uibModal']
 
     function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi, $timeout, $anchorScroll, $location, $uibModal) {
@@ -60,30 +60,32 @@
 
         function _profileMode(friend) {
             console.log(friend)
-            vm.profileView = true
-            if (friend.name === "kenny") {
+            if (friend.name === "Ed") {
                 vm.profile = friend,
                     vm.profile.odometer = 33456,
                     vm.profile.range = '30 miles',
                     vm.profile.lockStatus = 'Locked',
                     vm.profile.driveStatus = 'In Drive',
-                    vm.profile.panicMode = 'Off'
+                    vm.profile.panicMode = 'Off',
+                    vm.profileView = true
             }
-            else if (friend.name === 'cory') {
+            else if (friend.name === 'Cory') {
                 vm.profile = friend,
                     vm.profile.odometer = 60000,
                     vm.profile.range = '50 miles',
                     vm.profile.lockStatus = 'Unlocked',
                     vm.profile.driveStatus = 'Park',
-                    vm.profile.panicMode = 'Off'
+                    vm.profile.panicMode = 'Off',
+                    vm.profileView = true
             }
-            else if (friend.name === 'jerry') {
+            else if (friend.name === 'Betty') {
                 vm.profile = friend,
                     vm.profile.odometer = 80000,
                     vm.profile.range = '20 miles',
                     vm.profile.lockStatus = 'locked',
                     vm.profile.driveStatus = 'Park',
-                    vm.profile.panicMode = 'Off'
+                    vm.profile.panicMode = 'Off',
+                    vm.profileView = true
             }
         }
 
