@@ -4,28 +4,25 @@
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
 
-    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal']
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal', '$rootScope']
 
-    function RightBoxController($log, friendService, parkingRideService, $uibModal) {
+    function RightBoxController($log, friendService, parkingRideService, $uibModal, $rootScope) {
         let vm = this
-
         vm.faqs = null
         vm.friendsList = null
         vm.$uibModal = $uibModal
         vm.openModalOne = _openModalOne
+        vm.getAllParking = _getAllParking
 
         init()
 
         function init() {
-            getAllParking()
-            debugger
-
             vm.emergencyMsg = _emergencyMsg;
             vm.fuelMsg = _fuelMsg;
             vm.lostMsg = _lostMsg;
             vm.showParking = _showParking
             vm.clearCalls = _clearCalls
-            vm.isParkingShown = MSFIDOCredentialAssertion
+            // vm.isParkingShown = MSFIDOCredentialAssertion
             //vm.emergency = _emergency;
             //vm.callriend = _callFriend;
             vm.toggle = _toggle;
@@ -93,31 +90,39 @@
             }
         }
 
+            function _getAllParking() {
+                vm.isParkingShown = true;
+                parkingRideService.readAll()
+                    .then(data => {
+                        vm.parkingArray = data
+                        $rootScope.$broadcast('addParking', vm.parkingArray)
+                    })
+            }
 
 
-        function _showParking() {
-            vm.isParkingShown = true
-        }
 
-        function _clearCalls() {
-            vm.emergencyActive = false
-            vm.frenCallActive = false
-        }
+            function _showParking() {
+                vm.isParkingShown = true
+            }
 
-        function _openModalOne() {
-            var modalInstance = vm.$uibModal.open({
-                animation: true,
-                templateUrl: 'client/site/footer/modal-phone.html',
-                controller: 'modalController as mc',
-                size: 'lg'
-            });
+            function _clearCalls() {
+                vm.emergencyActive = false
+                vm.frenCallActive = false
+            }
 
-            modalInstance.result.then(function () {
-            }, function () {
-                console.log('Modal dismissed at: ' + new Date());
-            });
-        }
+            function _openModalOne() {
+                var modalInstance = vm.$uibModal.open({
+                    animation: true,
+                    templateUrl: 'client/site/footer/modal-phone.html',
+                    controller: 'modalController as mc',
+                    size: 'lg'
+                });
 
+                modalInstance.result.then(function () {
+                }, function () {
+                    console.log('Modal dismissed at: ' + new Date());
+                });
+            }
 
 
     }

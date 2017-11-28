@@ -1,6 +1,6 @@
-<div ng-controller="sideNavController as sideCtrl">
-    <div class="panel panel-default bg-silver-darker" style="height:700px;">
-        <div class="panel-heading bg-black-lighter">
+<div ng-controller="rightBoxController as sideCtrl">
+    <div class="panel panel-default" style="height:700px;">
+        <div class="panel-heading">
             <h3 class="panel-title"></h3>
         </div>
         <div class="panel-body">
@@ -16,7 +16,7 @@
                     </h3>
                 </div>
                 <div id="collapseone" class="panel-collapse collapse">
-                    <div class="panel-body">
+                    <div class="panel-body bg-silver">
                         <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a>
                         </button>
                         <br/>
@@ -54,7 +54,7 @@
                         <div class="space-30"></div>
 
                         <button class="btn btn-sm btn-danger" ng-click="sideCtrl.frenCallActive = true"> Call Friend</button>
-                        <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">Dialing kenny...</div>
+                        <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">Dialing Ed...</div>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div id="collapsethree" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <button class="btn btn-sm btn-default" ng-click="sideCtrl.isParkingShown = true">Search Nearby Parking</button>
+                        <button class="btn btn-sm btn-default" ng-click="sideCtrl.getAllParking()">Search Nearby Parking</button>
                         <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false">Clear</button>
                         </br>
                         <div ng-show="sideCtrl.isParkingShown" style="color:#3A89BD">Retrieving locations...</div>
