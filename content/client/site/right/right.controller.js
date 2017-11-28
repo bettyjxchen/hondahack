@@ -3,17 +3,21 @@
 
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
-    RightBoxController.$inject = ['$log', 'friendService']
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal']
 
-    function RightBoxController($log, friendService) {
+    function RightBoxController($log, friendService, parkingRideService, $uibModal) {
         let vm = this
         
         vm.faqs = null
         vm.friendsList = null
+        vm.$uibModal = $uibModal
+        vm.openModalOne = _openModalOne
 
         init() 
 
         function init() {
+            getAllParking();
+
             friendService.readAll().then(response => { $log.log(response);
                 vm.friendsList = response })
             
@@ -24,6 +28,29 @@
 
             }
         }
-        $log.log(vm.friendsList)
+
+        function getAllParking(){
+            parkingRideService.readAll().then(response => {console.log(response)});
+        }
+
+        function _openModalOne() {
+            var modalInstance = vm.$uibModal.open({
+                animation: true,
+                templateUrl: 'client/site/footer/modal-phone.html',  
+                controller: 'modalController as mc', 
+                size: 'lg'
+            });
+
+            modalInstance.result.then(function () {                   
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());     
+            });
+        }
+        
+
+
+
+
+
     }
 })();
