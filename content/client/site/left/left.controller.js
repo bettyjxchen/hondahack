@@ -3,17 +3,27 @@
 
     angular.module('client.site')
         .controller('leftBoxController', LeftBoxController)
-    LeftBoxController.$inject = ['$log', 'friendService']
 
-    function LeftBoxController($log, friendService) {
+    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi']
+
+    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi) {
         let vm = this
 
         vm.friendsList = null
+        vm.addFriend = _addFriend
 
         init()
         function init() {
-            friendService.readAll().then(response=> {$log.log(response); vm.friendsList = response})
+            friendService.readAll()
+                .then(response => {
+                    $log.log(response)
+                    vm.friendsList = response
+                })
         }
-        $log.log(vm.friendsList)
+
+        function _addFriend(friend) {
+            $rootScope.$broadcast('addFriend', friend)
+        }
+        
     }
 })();
