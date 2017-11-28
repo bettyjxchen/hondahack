@@ -221,7 +221,11 @@
         function addFriend(friend) {
             friend.options.icon = {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 5
+                fillColor: 'black',
+                fillOpacity: 0.8,                                    
+                scale: 8,
+                strokeColor: 'white',
+                strokeWeight: 3
             }
             vm.markers.push(friend)
             console.log(vm.markers)
