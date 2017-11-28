@@ -14,7 +14,7 @@
         vm.deleteFriend = _deleteFriend
         vm.profileView = false
         vm.profileMode = _profileMode
-        vm.add = _add();
+        vm.add = _add
         vm.profile = {}
         vm.item = {};
 
@@ -25,6 +25,7 @@
                     $log.log(response)
                     vm.friendsList = response
                 })
+            
         }
 
         function _addFriend(friend) {
@@ -64,8 +65,9 @@
             }
         }
 
-        function _add(){
+        function _add(friend){
             console.log(vm.item);
+            vm.friendsList.push(friend);
         }
     }
 })();

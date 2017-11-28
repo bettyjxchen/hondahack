@@ -12,7 +12,7 @@
                     <input class="form-control" name="name" type="text" ng-model="leftCtrl.item.name"/><br/>
                     <label>License Number</label><br/>
                     <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum"/><br/>
-                    <button ng-click="leftCtrl.addMore = false; leftCtrl.add()" class="btn btn-sm btn-success">Add</button>
+                    <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-success">Add</button>
                 </div>
 
             <div ng-show="leftCtrl.profileView">
