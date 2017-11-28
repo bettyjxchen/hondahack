@@ -5,32 +5,27 @@
         .controller('leftBoxController', LeftBoxController)
         .directive('setModelOnChange', SetModelOnChange)
 
-<<<<<<< HEAD
-    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$timeout', '$anchorScroll', '$location']
-
-    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi, $timeout, $anchorScroll, $location) {
-=======
-    SetModelOnChange.$inject = []
-    function SetModelOnChange() {
-        return {
-            require: "ngModel",
-            link: function postLink(scope, elem, attrs, ngModel) {
-                scope.$on("SMOC.removeImageToUploadDir", (e) => {
-                    elem.val(null)
-                })
-                elem.on("change", (e) => {
-                    console.log("on change (from directive)", e);
-                    var files = elem[0].files;
-                    ngModel.$setViewValue(files)
-                })
+        SetModelOnChange.$inject = []
+        function SetModelOnChange() {
+            return {
+                require: "ngModel",
+                link: function postLink(scope, elem, attrs, ngModel) {
+                    scope.$on("SMOC.removeImageToUploadDir", (e) => {
+                        elem.val(null)
+                    })
+                    elem.on("change", (e) => {
+                        console.log("on change (from directive)", e);
+                        var files = elem[0].files;
+                        ngModel.$setViewValue(files)
+                    })
+                }
             }
         }
-    }
+            
+    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$timeout', '$anchorScroll', '$location', '$uibModal']
 
-    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$uibModal']
+    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi, $timeout, $anchorScroll, $location, $uibModal) {
 
-    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi, $uibModal) {
->>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
         let vm = this
 
         vm.friendsList = null
@@ -52,10 +47,6 @@
                     $log.log(response)
                     vm.friendsList = response
                 })
-<<<<<<< HEAD
-
-=======
->>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
         }
 
         function _addFriend(friend) {
@@ -96,11 +87,6 @@
             }
         }
 
-<<<<<<< HEAD
-        function _add(friend) {
-            console.log(vm.item);
-            vm.friendsList.push(friend);
-=======
         function _add(item) {
             console.log(item);
             vm.hidePlus = false
@@ -123,7 +109,6 @@
                     vm.showSuccess = true
                 })
                 .catch(() => $log.log('Modal dismissed at: ' + new Date()))
->>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
         }
 
         function _submitReply() {
