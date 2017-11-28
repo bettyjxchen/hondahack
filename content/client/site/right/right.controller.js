@@ -1,3 +1,4 @@
+
 (function() {
     'use strict'
 
@@ -9,7 +10,8 @@
         let vm = this
         
         vm.faqs = null
-        vm.friendsList = null
+        //vm.friendsList = 
+        vm.showFaqs = _showFaqs
 
         init() 
 
@@ -24,6 +26,11 @@
 
             }
         }
+
+        function _showFaqs () {
+            vm.myFaqs = !vm.myFaqs
+        }
+        
         $log.log(vm.friendsList)
     }
 })();

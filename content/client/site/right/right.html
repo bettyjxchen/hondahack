@@ -5,18 +5,48 @@
         </div>
         <div class="panel-body">
             <table class="table table-hover">
-                <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" xui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">faq</h3>
-                    </td>
-                </tr>
-                <tr class="well" style="cursor: pointer;" xng-repeat="friend in leftCtrl.friendsList track by $index" ui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">Emergency</h3>
-                    </td>
-                </tr>
+                <tbody>
+                    <div id="accordion" class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Bluetooth</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>{{rb.faqs.bluetooth}}</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <p data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Jump Start</p>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <p data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">{{rb.faqs.jumpStart}}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Bluetooth</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>{{rb.faqs.bluetooth}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </tbody>
-                <table>
+            </table>
         </div>
     </div>
 </div>
