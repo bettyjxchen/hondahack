@@ -1,7 +1,35 @@
 <div ng-controller="sideNavController as sideCtrl">
-    <div class="container">
-        <ul>
-            <li ><a href="#" ng-click="sideCtrl.emergencyMsg()">Emergency</a></li>
-        </ul>
+    <div class="panel panel-inverse">
+    <div class="panel-heading">
+            <h3 class="panel-title">
+                <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseone">
+                    <i class="fa fa-plus-circle pull-right"></i>
+                    Emergency
+                </a>
+            </h3>
+        </div>
+    <div id="collapseone" class="panel-collapse collapse">
+            <div class="panel-body">
+                <a href="#" ng-click="sideCtrl.sendMsg()">Sent Message</a>
+                <div ng-show="sideCtrl.isActive">Emergency message was sent successfully.</div>
+            </div>
+        </div>
+        </div>
     </div>
+    <div class="panel panel-inverse">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
+                <i class="fa fa-plus-circle pull-right"></i>
+                Car Condition
+            </a>
+        </h3>
+    </div>
+<div id="collapsetwo" class="panel-collapse collapse">
+        <div class="panel-body">
+            <p>Fuel: </p>
+        </div>
+    </div>
+    </div>
+</div>
 </div>
