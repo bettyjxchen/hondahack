@@ -2,6 +2,8 @@ const router = require('express').Router()
 const hackersRoutes = require('./hackers.routes')
 const clientRoutes = require('./client.routes')
 const authenticate = require('../filters/authenticate')
+const fileTestRoutes = require('./files.routes')
+
 
 module.exports = router
 
@@ -12,6 +14,7 @@ router.use(authenticate)
 router.use('/api/hackers', hackersRoutes)
 // router.use('/api/entities', entitiesRoutes)
 // router.use('/api/examples', examplesRoutes)
+router.use('/api/files/', fileTestRoutes)
 
 
 

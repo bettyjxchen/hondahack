@@ -1,0 +1,27 @@
+<div ng-controller="fileTestController as fTCtrl">
+        <div class="form-group" ng-class="{'has-error': fTCtrl.newImageValidation}">
+            <label>
+                <input type="radio" ng-model="fTCtrl.imageSelection" ng-change="fTCtrl.fileUploadRadioBtn()" value="newImage"> Choose New Image
+                <input ng-if="fTCtrl.imageSelection === 'newImage' " type="file" multiple set-model-on-change ng-model="fTCtrl.selectedFiles1"
+                    ng-change="fTCtrl.fileChanged()">
+                <img ng-show="fTCtrl.image && fTCtrl.imageSelection === 'newImage' " ng-src="{{fTCtrl.image}}" class="file-upload_img-preview"
+                />
+            </label>
+            <div class="help-block" ng-show="fTCtrl.newImageValidation && fTCtrl.imageSelection === 'newImage' ">No file was selected even though new image was chosen</div>
+        </div>
+        <div class="form-group">
+            <label>
+                <input type="radio" ng-model="fTCtrl.imageSelection" value="noImage"> Use No Image
+            </label>
+        </div>
+        <div ng-show="fTCtrl.imageSelectOptions">
+                <div class="form-group">
+                    <label>
+                        <input type="radio" ng-model="fTCtrl.imageSelection" value="originalImage"> Keep Original Image
+                        <div class="form-group">
+                            <img ng-show="fTCtrl.imageUrl" ng-src="{{fTCtrl.imageUrl}}" class="file-upload_img-preview" />
+                        </div>
+                    </label>
+                </div>
+        </div>
+    </div>

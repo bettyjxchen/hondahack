@@ -3,7 +3,8 @@
         <div class="panel-heading">
             <div ng-hide="leftCtrl.profileView" class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button ng-click="leftCtrl.addMore = true" type='button' class='btn btn-sm btn-success' style='margin-top:10px;'>+</button>
+                    <button ng-hide="leftCtrl.hidePlus" ng-click="leftCtrl.addMore = true; leftCtrl.hidePlus = true" type='button' class='btn btn-sm btn-success'
+                        style='margin-top:10px;'>+</button>
                 </div>
             </div>
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
@@ -16,7 +17,22 @@
                 <br/>
                 <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum" />
                 <br/>
+<<<<<<< HEAD
                 <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-success">Add</button>
+            </div>
+=======
+              
+                <!-- <button class="btn btn-sm btn-white pull-right" ng-click="leftCtrl.indexMode = true">x</button> -->
+
+                <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-warning pull-right">Add</button>
+                <div class="m-b-10">
+                    <span>
+                        <a href="#" class="btn btn-white btn-sm" ng-click="leftCtrl.openModal()">Upload Image</a>
+                        <a ng-show="leftCtrl.showSuccess">success.</a>
+                    </span>
+                </div>
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
+
             </div>
 
             <div ng-show="leftCtrl.profileView">
@@ -39,11 +55,15 @@
                         <h5 xstyle="margin-top:40px;">{{friend.name}}</h5>
                     </td>
                     <td>
+<<<<<<< HEAD
                         <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-default" xstyle='margin-top:20px; width:60px; height:80px;'>
+=======
+                        <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
                             +
                         </button>
 
-                        <button ng-click="leftCtrl.deleteFriend($index)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
+                        <button ng-click="leftCtrl.deleteFriend(friend)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
                             - </button>
                     </td>
                 </tr>
@@ -72,7 +92,7 @@
                     <label class="col-sm-2 control-label">Odometer</label>
                     <div class="col-sm-10">
                         <p class="form-control-static">
-                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}} </p>
+                            {{leftCtrl.profile.odometer}} miles </p>
                     </div>
                 </div>
 
@@ -120,11 +140,31 @@
         </div>
 
         <div ng-show="leftCtrl.openChat">
+<<<<<<< HEAD
             <div class="panel panel bg-silver-lighter">
+=======
+            <div class='page-header'>
+                <h4 class="title">Message Thread</h2>
+            </div>
+            <div class="panel bg-silver-lighter">
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
                 <div class="crud-site-helpcenter-detail_chatPanel panel-body" style=" overflow-y: scroll; height: 400px;">
                     <div>
                         <!-- begin chats -->
                         <ul class="chats">
+<<<<<<< HEAD
+=======
+                            <li ng-class="{'right': dtlCtrl.isCurrentUser(reply.profileId)}" ng-repeat="reply in dtlCtrl.ticket.thread | orderBy: dateCreated">
+                                <span class="date-time">{{reply.dateCreated | date: 'short'}}</span>
+                                <a href="javascript:;" class="name">{{reply.profile.profileOverrides.name}}</a>
+                                <a href="javascript:;" class="image">
+                                    <img class="help-center_ticket-detail-profileImg" ng-src="{{reply.profile.profileOverrides.imageUrl}}">
+                                </a>
+                                <div class="message help-center_ticket-detail-reply">
+                                    <p ng-class="{'text-right': dtlCtrl.isCurrentUser(reply.profileId)}">{{reply.reply}}</p>
+                                </div>
+                            </li>
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
                             <li class="left">
                                 <span class="date-time">yesterday 11:23pm</span>
                                 <a href="javascript:;" class="name">Sowse Bawdy</a>

@@ -17,7 +17,11 @@
         function readAll() {
             let friendsArray = [
                 {
+<<<<<<< HEAD
                     name: "Ed",
+=======
+                    name: "Kenny",
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
                     profilePic: "https://www.scholfieldhonda.com/images/model-honda-accord%20hybrid.png",
                     id: 1,
                     coords: {
@@ -27,11 +31,15 @@
                     options: {
                         labelClass: 'marker_labels',
                         labelAnchor: '12 60',
+<<<<<<< HEAD
                         labelContent: 'Ed',
+=======
+                        labelContent: 'Kenny',
+>>>>>>> ae91436b639daa75b98fd78cb17d62c0a2c2c4ad
                     },
                 },
                 {
-                    name: "cory",
+                    name: "Cory",
                     profilePic: "http://st.motortrend.com/uploads/sites/10/2015/11/2013-honda-odyssey-ex-minivan-angular-front.png",
                     id: 2,
                     coords: {
@@ -41,12 +49,12 @@
                     options: {
                         labelClass: 'marker_labels',
                         labelAnchor: '12 60',
-                        labelContent: 'cory',
+                        labelContent: 'Cory',
                     }
                 },
                 {
-                    name: "jerry",
-                    profilePic: "https://blzgdapipro-a.akamaihd.net/game/unlocks/0x02500000000008E8.png",
+                    name: "Betty",
+                    profilePic: "https://shinglespringshonda.com/media/inventory/2018-honda-fit-lx-lunar-silver-metallic-3HGGK5G43JM703882-1.jpg",
                     id: Date.now(),
                     coords: {
                         latitude: 24.0039,
@@ -55,7 +63,7 @@
                     options: {
                         labelClass: 'marker_labels',
                         labelAnchor: '12 60',
-                        labelContent: 'jerry',
+                        labelContent: 'betty',
                     }
                 }
             ]
