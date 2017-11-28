@@ -53,7 +53,7 @@
                             name: item['name'],
                             options: {
                                 labelClass: 'marker_labels',
-                                labelAnchor: '12 60',
+                                labelAnchor: '12 30',
                                 labelContent: item.name,
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
@@ -71,6 +71,7 @@
                 scale: 5
             }
             vm.markers.push(friend)
+            console.log(vm.markers)
         }
 
 
