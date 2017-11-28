@@ -49,8 +49,8 @@
                     profilePic: "https://shinglespringshonda.com/media/inventory/2018-honda-fit-lx-lunar-silver-metallic-3HGGK5G43JM703882-1.jpg",
                     id: Date.now(),
                     coords: {
-                        latitude: 24.0039,
-                        longitude: -118.2301
+                        latitude: 33.9617,
+                        longitude: -118.3531
                     },
                     options: {
                         labelClass: 'marker_labels',

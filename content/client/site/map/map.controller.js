@@ -37,7 +37,7 @@
                                 path: google.maps.SymbolPath.CIRCLE,
                                 fillColor: 'black',
                                 fillOpacity: 0.8,
-                                scale: 8,
+                                scale: 6,
                                 strokeColor: 'white',
                                 strokeWeight: 3
                             }
@@ -54,9 +54,8 @@
             })
 
             vm.results = [
-                { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "pam" },
-                { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
-                { "LMD_MP_Latitude": "34.0839", "LMD_MP_Longitude": "-118.2000", "name": "lou" },
+                { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "kenny" },
+              
             ]
             var styleArrays = [
                 {
@@ -201,7 +200,7 @@
                     latitude: 34.0413606,
                     longitude: -118.2697771
                 },
-                zoom: 10,
+                zoom: 11,
                 options: {
                     scrollwheel: false,
                     streetViewControl: false,
@@ -226,12 +225,12 @@
                             options: {
                                 labelClass: 'marker_labels',
                                 labelAnchor: '12 30',
-                                labelContent: item.name,
+                                // labelContent: item.name,
                                 icon: {
-                                    path: google.maps.SymbolPath.CIRCLE,
-                                    fillColor: '#2AF6FF',
+                                    path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                                    fillColor: 'black',
                                     fillOpacity: 0.8,                                    
-                                    scale: 8,
+                                    scale: 6,
                                     strokeColor: 'white',
                                     strokeWeight: 3
                                 }
@@ -246,7 +245,7 @@
                 path: google.maps.SymbolPath.CIRCLE,
                 fillColor: '#2AF6FF',
                 fillOpacity: 0.8,                                    
-                scale: 8,
+                scale: 6,
                 strokeColor: 'white',
                 strokeWeight: 3
             }
