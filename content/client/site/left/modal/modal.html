@@ -1,0 +1,15 @@
+<div class="modal-header">
+        <h3 class="modal-title">Image Upload</h3>
+    </div>
+    
+    <div class="modal-body">
+        <div ng-include=" '/client/components/file-upload/file-upload.html' ">
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="modalCtrl.upload()">Upload</button>
+        <button class="btn btn-white" ng-click="modalCtrl.cancel()">Cancel</button>
+    </div>
+    
+    
