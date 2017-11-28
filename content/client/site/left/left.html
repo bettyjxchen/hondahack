@@ -16,18 +16,20 @@
             </div>
         </div>
 
-        <div ng-hide="leftCtrl.profileView" class="panel-body">
+        <div ng-hide="leftCtrl.profileView || leftCtrl.openChat" class="panel-body">
             <table class="table table-hover">
                 <tr class="well" ng-repeat="friend in leftCtrl.friendsList track by $index">
                     <td>
                         <a ng-click="leftCtrl.profileMode(friend)">
-                            <img style="width:65px; height:65px; cursor: pointer;" ng-src="{{friend.profilePic}}"></a>
+                            <img style="width:65px; height:65px; cursor: pointer;" ng-src="{{friend.profilePic}}">
+                        </a>
                     </td>
                     <td style='cursor: pointer'>
                         <h5 xstyle="margin-top:40px;">{{friend.name}}</h5>
                     </td>
                     <td>
-                        <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'> + 
+                        <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
+                        +
                         </button>
 
                         <button ng-click="leftCtrl.deleteFriend($index)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
@@ -59,7 +61,7 @@
                     <label class="col-sm-2 control-label">Odometer</label>
                     <div class="col-sm-10">
                         <p class="form-control-static">
-                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}}  </p>
+                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}} </p>
                     </div>
                 </div>
 
@@ -99,14 +101,115 @@
                 <div class="form-horizontal">
                     <button ng-click="leftCtrl.profileView = false" class="btn btn-md btn-white pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>
                         Back</button>
-                    <button ng-click="leftCtrl.openChat = true" class="btn btn-md btn-warning pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>Open Chat</button>
+                    <button ng-click="((leftCtrl.openChat = true) && (leftCtrl.profileView = false))" class="btn btn-md btn-warning pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>Open Chat</button>
                 </div>
 
             </div>
-            </tbody>
-            <table>
         </div>
 
-    </div>
+        <div ng-show="leftCtrl.openChat"> 
+            <div class='page-header'>
+                <h4 class="title">Message Thread</h2>
+            </div>
+            <div class="panel bg-silver-lighter">
+                <div class="crud-site-helpcenter-detail_chatPanel panel-body" style=" overflow-y: scroll; height: 400px;">
+                    <div>
+                        <!-- begin chats -->
+                        <ul class="chats">
+                            <li ng-class="{'right': dtlCtrl.isCurrentUser(reply.profileId)}"  ng-repeat="reply in dtlCtrl.ticket.thread | orderBy: dateCreated">
+                                <span class="date-time">{{reply.dateCreated | date: 'short'}}</span>
+                                <a href="javascript:;" class="name">{{reply.profile.profileOverrides.name}}</a>
+                                <a href="javascript:;" class="image">
+                                    <img class="help-center_ticket-detail-profileImg" ng-src="{{reply.profile.profileOverrides.imageUrl}}">
+                                </a>
+                                <div class="message help-center_ticket-detail-reply">
+                                    <p ng-class="{'text-right': dtlCtrl.isCurrentUser(reply.profileId)}">{{reply.reply}}</p>
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">yesterday 11:23pm</span>
+                                <a href="javascript:;" class="name">Sowse Bawdy</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-12.jpg" /></a>
+                                <div class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit volutpat. Praesent mattis interdum arcu eu feugiat.
+                                </div>
+                            </li>
+                            <li class="right">
+                                <span class="date-time">08:12am</span>
+                                <a href="#" class="name"><span class="label label-primary">ADMIN</span> Me</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-13.jpg" /></a>
+                                <div class="message">
+                                    Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">09:20am</span>
+                                <a href="#" class="name">Neck Jolly</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-10.jpg" /></a>
+                                <div class="message">
+                                    Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">11:15am</span>
+                                <a href="#" class="name">Shag Strap</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-14.jpg" /></a>
+                                <div class="message">
+                                    Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">yesterday 11:23pm</span>
+                                <a href="javascript:;" class="name">Sowse Bawdy</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-12.jpg" /></a>
+                                <div class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit volutpat. Praesent mattis interdum arcu eu feugiat.
+                                </div>
+                            </li>
+                            <li class="right">
+                                <span class="date-time">08:12am</span>
+                                <a href="#" class="name"><span class="label label-primary">ADMIN</span> Me</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-13.jpg" /></a>
+                                <div class="message">
+                                    Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">09:20am</span>
+                                <a href="#" class="name">Neck Jolly</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-10.jpg" /></a>
+                                <div class="message">
+                                    Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                </div>
+                            </li>
+                            <li class="left">
+                                <span class="date-time">11:15am</span>
+                                <a href="#" class="name">Shag Strap</a>
+                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-14.jpg" /></a>
+                                <div class="message">
+                                    Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
+                                </div>
+                            </li>
+                            <li class="m-t-0" id="bottom"></li>
+                        </ul>
+                    </div>
+                </div>
 
+                <div class="panel-footer bg-silver">
+                    <p></p>
+                    <form name="dtlCtrl.replyForm" ng-submit="dtlCtrl.submitReply()" novalidate>
+                        <div class="input-group">
+                            <input type="text" name="reply" ng-model="dtlCtrl.formData.reply" rows="5" class="form-control bg-white" placeholder="Enter message"
+                                required>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-theme pull-right" ng-disabled="dtlCtrl.replyForm.reply.$invalid">Reply
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
