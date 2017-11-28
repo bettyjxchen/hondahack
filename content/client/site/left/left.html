@@ -1,14 +1,22 @@
 <div ng-controller="leftBoxController as leftCtrl">
     <div class="panel panel-default" style="height:700px;">
         <div class="panel-heading">
-            <div class='btn-toolbar pull-right'>
+            <div ng-hide="leftCtrl.profileView" class='btn-toolbar pull-right'>
                 <div class='btn-group'>
                     <button type='button' class='btn btn-lg btn-info' style='margin-top:10px;'>+</button>
                 </div>
+                
             </div>
-            <h2>Friends</h2>
+            <h3 ng-hide="leftCtrl.profileView">Friends</h3>
+            <div ng-show="leftCtrl.profileView">
+                <span>
+                    <img style="width:30px; height:30px; cursor: pointer;" class="pull-right row" ng-src="{{leftCtrl.profile.profilePic}}">
+                    <h3>{{leftCtrl.profile.name}}</h3>
+                </span>
+            </div>
         </div>
-        <div class="panel-body">
+
+        <div ng-hide="leftCtrl.profileView" class="panel-body">
             <table class="table table-hover">
                     <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" ng-click="leftCtrl.profileView(friend)">
                         <td><img style="width:65px; height:65px;"ng-src="{{friend.profilePic}}"></td>
