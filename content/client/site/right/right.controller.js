@@ -2,12 +2,17 @@
     'use strict'
 
     angular.module('client.site')
-        .controller('sideNavController', SideNavController)
-    SideNavController.$inject = ['$log', 'parkingRideService']
+        .controller('rightBoxController', RightBoxController)
+        
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal']
 
-    function SideNavController($log, parkingRideService) {
+    function RightBoxController($log, friendService, parkingRideService, $uibModal) {
         let vm = this
-        var parkingArray = []
+        
+        vm.faqs = null
+        vm.friendsList = null
+        vm.$uibModal = $uibModal
+        vm.openModalOne = _openModalOne
 
         init()
 
@@ -96,8 +101,20 @@
             vm.frenCallActive = false
         }
 
+        function _openModalOne() {
+            var modalInstance = vm.$uibModal.open({
+                animation: true,
+                templateUrl: 'client/site/footer/modal-phone.html',  
+                controller: 'modalController as mc', 
+                size: 'lg'
+            });
 
-
+            modalInstance.result.then(function () {                   
+            }, function () {
+                console.log('Modal dismissed at: ' + new Date());     
+            });
+        }
+        
 
 
     }
