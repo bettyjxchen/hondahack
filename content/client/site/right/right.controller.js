@@ -3,9 +3,9 @@
 
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
-    RightBoxController.$inject = ['$log', 'friendService']
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService']
 
-    function RightBoxController($log, friendService) {
+    function RightBoxController($log, friendService, parkingRideService) {
         let vm = this
         
         vm.faqs = null
@@ -14,6 +14,8 @@
         init() 
 
         function init() {
+            getAllParking();
+
             friendService.readAll().then(response => { $log.log(response);
                 vm.friendsList = response })
             
@@ -24,6 +26,15 @@
 
             }
         }
-        $log.log(vm.friendsList)
+
+        function getAllParking(){
+            parkingRideService.readAll().then(response => {console.log(response)});
+        }
+        
+
+
+
+
+
     }
 })();
