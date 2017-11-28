@@ -1,17 +1,16 @@
 <!-- HEADER -->
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" >HondAssist  </a>
-        
-    </div>
-    <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-    <ul class="nav navbar-nav">
-        <li>
-            <a></a>
-        </li>
-        <li>
-            <a ui-sref="#" class="pull right">Joe</a>
-        </li>
-    </ul>
-</nav>
-
+<div ng-controller="headerController as hc">
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header pull-left">
+            <a class="navbar-brand">HondAssist</a>
+            <img style="width: 51px; height: 54px; margin-left: -90px; border-radius: 50%" ng-src='https://yt3.ggpht.com/-XasXu4GveZU/AAAAAAAAAAI/AAAAAAAAAAA/CDFNDspUDV0/s900-c-k-no-mo-rj-c0xffffff/photo.jpg' />
+        </div>
+        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
+        <div class="nav navbar-nav col-sm-6">
+                <h4 style="color: white; padding-top: 10px; padding-left: 580px">{{hc.currentTime | date:'short'}}</h4>
+        </div>
+        <div class="col-sm-1 pull-right">
+        <img style="width: 51px; height: 54px; margin-left: 50px" ng-src='http://digitalconqurer.com/wp-content/uploads//2012/02/cellphone-signal.png' />
+        </div>        
+    </nav>
+</div>
