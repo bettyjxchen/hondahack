@@ -8,9 +8,9 @@
     uiGmapGoogleMapApiProviderConfig.$inject = ['uiGmapGoogleMapApiProvider']
 
     function uiGmapGoogleMapApiProviderConfig (GoogleMapApiProviders) {
-        GoogleMapApiProviders.config({
-            key: 'AIzaSyDV8CE-6bAiubBlN6ZbEkvdVesz21QjNKA',
-            v: '3.17'
+        GoogleMapApiProviders.configure({
+            key: 'AIzaSyDX7riYj5lxzz_eINvXGLPPZQrshCLlBoI',
+            v: '3.29'
         })
     }
 })();
