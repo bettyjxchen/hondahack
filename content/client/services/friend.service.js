@@ -17,8 +17,8 @@
         function readAll() {
             let friendsArray = [
                 {
-                    name: "Kenny",
-                    profilePic: "https://uploads.haystak.com/Production_Templates/Images/2016/Honda/16hondacivic/2016_HondaCivic_AngularFront.png",
+                    name: "Ed",
+                    profilePic: "https://www.scholfieldhonda.com/images/model-honda-accord%20hybrid.png",
                     id: 1,
                     coords: {
                         latitude: 34.0413606,
@@ -27,7 +27,7 @@
                     options: {
                         labelClass: 'marker_labels',
                         labelAnchor: '12 60',
-                        labelContent: 'Kenny',
+                        labelContent: 'Ed',
                     },
                 },
                 {
