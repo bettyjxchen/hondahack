@@ -19,6 +19,10 @@
                 addFriend(friend)
             })
 
+            $rootScope.$on('deleteFriend', (e, index) => {
+                deleteFriend(index)
+            })
+
             vm.results = [
                 { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "pam" },
                 { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
@@ -178,6 +182,10 @@
             }
             vm.markers.push(friend)
             console.log(vm.markers)
+        }
+
+        function deleteFriend(index) {
+            vm.markers.splice(index, 1)
         }
 
 
