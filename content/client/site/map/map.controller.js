@@ -19,6 +19,10 @@
                 addFriend(friend)
             })
 
+            $rootScope.$on('deleteFriend', (e, index) => {
+                deleteFriend(index)
+            })
+
             vm.results = [
                 { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "pam" },
                 { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
@@ -168,7 +172,6 @@
                     longitude: -118.2697771
                 },
                 zoom: 12,
-
                 options: {
                     scrollwheel: false,
                     streetViewControl: false,
@@ -199,7 +202,7 @@
                             name: item['name'],
                             options: {
                                 labelClass: 'marker_labels',
-                                labelAnchor: '12 60',
+                                labelAnchor: '12 30',
                                 labelContent: item.name,
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
@@ -221,6 +224,11 @@
                 scale: 5
             }
             vm.markers.push(friend)
+            console.log(vm.markers)
+        }
+
+        function deleteFriend(index) {
+            vm.markers.splice(index, 1)
         }
 
 
