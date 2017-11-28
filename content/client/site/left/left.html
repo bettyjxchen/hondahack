@@ -1,9 +1,9 @@
 <div ng-controller="leftBoxController as leftCtrl">
-    <div class="panel panel-default">
+    <div class="panel panel-default" style="height:700px;">
         <div class="panel-heading">
             <div ng-hide="leftCtrl.profileView" class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button type='button' class='btn btn-sm btn-success' style='margin-top:10px;'>+</button>
+                    <button type='button' class='btn btn-lg btn-info' style='margin-top:10px;'>+</button>
                 </div>
             </div>
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
@@ -17,90 +17,13 @@
 
         <div ng-hide="leftCtrl.profileView" class="panel-body">
             <table class="table table-hover">
-                <tr class="well" ng-repeat="friend in leftCtrl.friendsList track by $index">
-                    <td>
-                        <a ng-click="leftCtrl.profileMode(friend)">
-                            <img style="width:65px; height:65px; cursor: pointer;" ng-src="{{friend.profilePic}}">
-                        </a>
-                    </td>
-                    <td style='cursor: pointer'>
-                        <h5 xstyle="margin-top:40px;">{{friend.name}}</h5>
-                    </td>
-                    <td>
-                        <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
-                            + </button>
-                        <button ng-click="leftCtrl.deleteFriend($index)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
-                            - </button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div ng-show="leftCtrl.profileView" class="panel-body">
-            <div class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.name}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Location</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Odometer</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Range</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.range}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Lock Status</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.lockStatus}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Drive Status</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.driveStatus}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Panic Mode</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static">
-                            {{leftCtrl.profile.panicMode}}
-                        </p>
-                    </div>
-                </div>
-                <div class="form-horizontal">
-                    <button ng-click="leftCtrl.profileView = false" class="btn btn-md btn-white pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>
-                        Back</button>
-                    <button ng-click="leftCtrl.openChat = true" class="btn btn-md btn-warning pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>Open Chat</button>
-                </div>
-            </div>
-
+                    <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" ng-click="leftCtrl.profileView(friend)">
+                        <td><img style="width:65px; height:65px;"ng-src="{{friend.profilePic}}"></td>
+                        <td><h3 xstyle="margin-top:40px;">{{friend.name}}</h3></td>
+                        <td><button ng-click="leftCtrl.addFriend(friend)" class="btn btn-lg"  xstyle='margin-top:20px; width:60px; height:80px;'>+</button></td>
+                    </tr>
+                </tbody>
+            <table>
         </div>
     </div>
 
