@@ -1,4 +1,10 @@
-<<<<<<< HEAD
+<div ng-controller="rightBoxController as rb">
+    <div class="panel panel-inverse">
+        <div class="panel-heading">
+            <h4 class="panel-title">Panel with Tabs</h4>
+        </div>
+    </div>
+</div>
 <div ng-controller="sideNavController as sideCtrl">
     <div class="panel panel-inverse">
     <div class="panel-heading">
@@ -11,8 +17,11 @@
         </div>
     <div id="collapseone" class="panel-collapse collapse">
             <div class="panel-body">
-                <a href="#" ng-click="sideCtrl.sendMsg()">Sent Message</a>
-                <div ng-show="sideCtrl.isActive">Emergency message was sent successfully.</div>
+                <button type="btn btn-lg btn-success" ng-click="sideCtrl.fuelMsg()">Fuel Message</a></button><br/>
+                <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel essage was sent successfully.</div>
+                <div class="space-20"></div>
+                <button type="btn btn-lg btn-success" ng-click="sideCtrl.lostMsg()">Lost Message</a></button>
+                <div ng-show="sideCtrl.isLost" style="color:#3A89BD">Emergency lost message was sent successfully.</div>
             </div>
         </div>
         </div>
@@ -22,19 +31,23 @@
         <h3 class="panel-title">
             <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo">
                 <i class="fa fa-plus-circle pull-right"></i>
-                Car Condition
+                Emergency Call
             </a>
         </h3>
     </div>
 <div id="collapsetwo" class="panel-collapse collapse">
         <div class="panel-body">
-            <p>Fuel: </p>
+            <button type="btn btn-danger" ng-click="sideCtrl.emergency()">Call 911</button></p>
+            <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">calling 911...</div>
+            <div class="space-30"></div>
+            <p style="color:red">Your car is running out of gas</p>
+            <button type="btn btn-primary" ng-click="sideCtrl.callFriend()">Call Emergency Friend</button></p>
+            <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">calling kenny...</div>
         </div>
     </div>
     </div>
 </div>
-=======
-<div ng-controller="rightBoxController as rb">
+<!--<div ng-controller="rightBoxController as rb">
     <div class="panel panel-inverse" style="height: 500px;">
         <div class="panel-heading">
             <h4 class="panel-title">Panel with Tabs</h4>
@@ -55,5 +68,4 @@
                 <table>
         </div>
     </div>
->>>>>>> 5bb9ee007dc354e1edd3443d2d7fb04ac98fdf2b
-</div>
+</div> -->
