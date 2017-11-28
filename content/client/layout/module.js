@@ -11,7 +11,15 @@
     function RouteConfig($stateProvider) {
         $stateProvider
             .state('site', {
-                abstract: true,
+                url: '/HondAssist',
+                views: {
+                    root: {
+                        templateUrl: 'client/layout/landingpage.html'
+                    }
+                }
+            })
+            .state('site.home', {
+                url: '/HondAssist/home',
                 views: {
                     root: {
                         templateUrl: 'client/layout/layout.tpl.html'
