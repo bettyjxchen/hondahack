@@ -164,11 +164,7 @@
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
                                     scale: 5
-<<<<<<< HEAD
                                   },
-=======
-                                },
->>>>>>> 341b3b3ffcf795aa0c7ea9cecbccfe1b75a0e51d
                             }
                         })
                     })
