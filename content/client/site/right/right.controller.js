@@ -7,10 +7,11 @@
 
     function RightBoxController($log, friendService) {
         let vm = this
-
+        
+        vm.faqs = null
         vm.friendsList = null
 
-        init()
+        init() 
 
         function init() {
             friendService.readAll().then(response => { $log.log(response);
