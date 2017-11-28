@@ -4,15 +4,17 @@
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
 
-    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal', '$rootScope']
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal', '$rootScope', '$state']
 
-    function RightBoxController($log, friendService, parkingRideService, $uibModal, $rootScope) {
+    function RightBoxController($log, friendService, parkingRideService, $uibModal, $rootScope, $state) {
         let vm = this
         vm.faqs = null
         vm.friendsList = null
         vm.$uibModal = $uibModal
         vm.openModalOne = _openModalOne
         vm.getAllParking = _getAllParking
+        vm.reloadPage = _reloadPage
+
 
         init()
 
@@ -83,11 +85,6 @@
                 }
             }
 
-            function getAllParking() {
-                debugger
-                parkingRideService.readAll()
-                    .then(data => console.log(data));
-            }
         }
 
             function _getAllParking() {
@@ -108,6 +105,11 @@
             function _clearCalls() {
                 vm.emergencyActive = false
                 vm.frenCallActive = false
+            }
+
+            function _reloadPage(){
+                vm.isParkingShown = false
+                $state.go('site', null, {reload:true})
             }
 
             function _openModalOne() {

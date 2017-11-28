@@ -43,7 +43,7 @@
                 </div>
                 <div id="collapsetwo" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button>
+                        <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true; sideCtrl.openModalOne()">Call #911</button>
                         <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.emergencyActive = false; sideCtrl.frenCallActive = false">Cancel</button>
                         <br>
                         <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">
@@ -72,7 +72,7 @@
                 <div id="collapsethree" class="panel-collapse collapse">
                     <div class="panel-body">
                         <button class="btn btn-sm btn-default" ng-click="sideCtrl.getAllParking()">Search Nearby Parking</button>
-                        <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false">Clear</button>
+                        <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false; sideCtrl.reloadPage()">Clear</button>
                         </br>
                         <div ng-show="sideCtrl.isParkingShown" style="color:#3A89BD">Retrieving locations...</div>
                         <div class="space-30"></div>
