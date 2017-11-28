@@ -18,7 +18,7 @@
             let friendsArray = [
                 {
                     name: "Ed",
-                    profilePic: "https://www.scholfieldhonda.com/images/model-honda-accord%20hybrid.png",
+                    profilePic: "https://uploads.haystak.com/Production_Templates/Images/2016/Honda/16hondacivic/2016_HondaCivic_AngularFront.png",
                     id: 1,
                     coords: {
                         latitude: 34.0413606,
