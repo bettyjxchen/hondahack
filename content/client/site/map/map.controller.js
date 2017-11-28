@@ -171,7 +171,7 @@
                     latitude: 34.0413606,
                     longitude: -118.2697771
                 },
-                zoom: 12,
+                zoom: 10,
                 options: {
                     scrollwheel: false,
                     streetViewControl: false,
