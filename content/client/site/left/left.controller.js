@@ -4,9 +4,9 @@
     angular.module('client.site')
         .controller('leftBoxController', LeftBoxController)
 
-    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi']
+    LeftBoxController.$inject = ['$log', 'friendService', '$rootScope', 'uiGmapGoogleMapApi', '$timeout', '$anchorScroll', '$location']
 
-    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi) {
+    function LeftBoxController($log, friendService, $rootScope, uiGmapGoogleMapApi, $timeout, $anchorScroll, $location) {
         let vm = this
 
         vm.friendsList = null
@@ -26,7 +26,7 @@
                     $log.log(response)
                     vm.friendsList = response
                 })
-            
+
         }
 
         function _addFriend(friend) {
@@ -66,9 +66,35 @@
             }
         }
 
-        function _add(friend){
+        function _add(friend) {
             console.log(vm.item);
             vm.friendsList.push(friend);
+        }
+
+        function _submitReply() {
+            vm.formData = {
+                reply: vm.formData.reply,
+                _id: vm.ticket._id
+            }
+
+            vm.formData.profileId = vm.currentProfile._id
+            vm.formData.dateCreated = new Date()
+            vm.formData.profile = {}
+            vm.formData.profile.profileOverrides = {
+                imageUrl: vm.currentProfile.profileOverrides.imageUrl,
+                name: vm.friend.name
+            }
+            vm.ticket.thread.push(vm.formData)
+            vm.formData = null
+
+            _scrollToBottom()
+        }
+
+        function _scrollToBottom() {
+            $timeout(() => {
+                $location.hash('bottom');
+                $anchorScroll();
+            })
         }
     }
 })();
