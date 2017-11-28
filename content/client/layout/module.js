@@ -19,9 +19,9 @@
                 }
             })
             .state('site.home', {
-                url: '/HondAssist/home',
+                url: '/home',
                 views: {
-                    root: {
+                    'home': {
                         templateUrl: 'client/layout/layout.tpl.html'
                     }
                 }
