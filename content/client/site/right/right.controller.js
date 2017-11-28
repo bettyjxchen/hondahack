@@ -17,7 +17,6 @@
             getAllParking();
 
             friendService.readAll().then(response => { $log.log(response);
-                debugger;
                 vm.friendsList = response })
             
                 vm.faqs = {
@@ -29,7 +28,6 @@
         }
 
         function getAllParking(){
-            debugger;
             parkingRideService.readAll().then(response => {console.log(response)});
         }
         
