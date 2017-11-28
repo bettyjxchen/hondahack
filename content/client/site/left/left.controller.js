@@ -32,6 +32,7 @@
 
         function _deleteFriend(friend) {
             $rootScope.$broadcast('deleteFriend', friend)
+            debugger
         }
 
         function _profileMode(friend) {
