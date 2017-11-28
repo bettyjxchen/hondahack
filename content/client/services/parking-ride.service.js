@@ -160,6 +160,7 @@
             ]
             return $q.resolve(parkingArray)
                 .catch(onError)
+            debugger
         }
 
         function readById(id) {

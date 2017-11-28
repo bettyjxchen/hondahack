@@ -24,7 +24,7 @@
             vm.clearCalls = _clearCalls
             // vm.isParkingShown = MSFIDOCredentialAssertion
             //vm.emergency = _emergency;
-            //vm.callFriend = _callFriend;
+            //vm.callriend = _callFriend;
             vm.toggle = _toggle;
             vm.toggletwo = _toggletwo;
             vm.emergencyActive = false;
@@ -83,17 +83,14 @@
                 }
             }
 
-
+            function getAllParking() {
+                debugger
+                parkingRideService.readAll()
+                    .then(data => console.log(data));
+            }
         }
 
-        function _getAllParking() {
-            vm.isParkingShown = true;
-            parkingRideService.readAll()
-                .then(data => {
-                    vm.parkingArray = data
-                    $rootScope.$broadcast('addParking', vm.parkingArray)
-                });
-        }
+
 
         function _showParking() {
             vm.isParkingShown = true

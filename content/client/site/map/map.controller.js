@@ -15,6 +15,7 @@
         init()
 
         function init() {
+            console.log(vm.markers)
             $rootScope.$on('addFriend', (e, friend) => {
                 addFriend(friend)
             })
@@ -45,8 +46,11 @@
                 })
             })
 
-            $rootScope.$on('deleteFriend', (e, index) => {
-                deleteFriend(index)
+            $rootScope.$on('deleteFriend', (e, friend) => {
+                console.log(friend)
+                console.log(vm.markers)
+                var index = vm.markers.indexOf(friend)
+                vm.markers.splice(index, 1)    
             })
 
             vm.results = [
@@ -255,10 +259,6 @@
             }
             vm.markers.push(friend)
             console.log(vm.markers)
-        }
-
-        function deleteFriend(index) {
-            vm.markers.splice(index, 1)
         }
 
 
