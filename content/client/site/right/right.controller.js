@@ -3,12 +3,12 @@
 
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
-        
+
     RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal']
 
     function RightBoxController($log, friendService, parkingRideService, $uibModal) {
         let vm = this
-        
+
         vm.faqs = null
         vm.friendsList = null
         vm.$uibModal = $uibModal
@@ -18,6 +18,8 @@
 
         function init() {
             getAllParking()
+            debugger
+
             vm.emergencyMsg = _emergencyMsg;
             vm.fuelMsg = _fuelMsg;
             vm.lostMsg = _lostMsg;
@@ -25,7 +27,7 @@
             vm.clearCalls = _clearCalls
             vm.isParkingShown = MSFIDOCredentialAssertion
             //vm.emergency = _emergency;
-            //vm.callFriend = _callFriend;
+            //vm.callriend = _callFriend;
             vm.toggle = _toggle;
             vm.toggletwo = _toggletwo;
             vm.emergencyActive = false;
@@ -84,15 +86,16 @@
                 }
             }
 
+            function getAllParking() {
+                debugger
+                parkingRideService.readAll()
+                    .then(data => console.log(data));
+            }
         }
 
-        function getAllParking() {
-            parkingRideService.readAll()
-                .then(data => console.log(data));
 
-        }
 
-        function _showParking () {
+        function _showParking() {
             vm.isParkingShown = true
         }
 
@@ -104,17 +107,17 @@
         function _openModalOne() {
             var modalInstance = vm.$uibModal.open({
                 animation: true,
-                templateUrl: 'client/site/footer/modal-phone.html',  
-                controller: 'modalController as mc', 
+                templateUrl: 'client/site/footer/modal-phone.html',
+                controller: 'modalController as mc',
                 size: 'lg'
             });
 
-            modalInstance.result.then(function () {                   
+            modalInstance.result.then(function () {
             }, function () {
-                console.log('Modal dismissed at: ' + new Date());     
+                console.log('Modal dismissed at: ' + new Date());
             });
         }
-        
+
 
 
     }

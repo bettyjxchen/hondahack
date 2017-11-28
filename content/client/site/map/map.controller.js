@@ -25,12 +25,10 @@
             // })
 
             $rootScope.$on('deleteFriend', (e, friend) => {
-                debugger
                 console.log(friend)
                 console.log(vm.markers)
                 var index = vm.markers.indexOf(friend)
-                vm.markers.splice(index, 1)
-                debugger
+                vm.markers.splice(index, 1)    
             })
 
             vm.results = [

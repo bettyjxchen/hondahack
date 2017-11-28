@@ -3,17 +3,32 @@
         <div class="panel-heading">
             <div ng-hide="leftCtrl.profileView" class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button ng-click="leftCtrl.addMore = true" type='button' class='btn btn-sm btn-success' style='margin-top:10px;'>+</button>
+                    <button ng-hide="leftCtrl.hidePlus" ng-click="leftCtrl.addMore = true; leftCtrl.hidePlus = true" type='button' class='btn btn-sm btn-success'
+                        style='margin-top:10px;'>+</button>
                 </div>
             </div>
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
-                <div class="form-group" ng-show="leftCtrl.addMore">
-                    <label>Friend's Name</label><br/>
-                    <input class="form-control" name="name" type="text" ng-model="leftCtrl.item.name"/><br/>
-                    <label>License Number</label><br/>
-                    <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum"/><br/>
-                    <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-success">Add</button>
+            <div class="form-group" ng-show="leftCtrl.addMore">
+                <label>Friend's Name</label>
+                <br/>
+                <input class="form-control" name="name" type="text" ng-model="leftCtrl.item.name" />
+                <br/>
+                <label>License Number</label>
+                <br/>
+                <input class="form-control" name="licenseNum" ng-model="leftCtrl.item.licenseNum" />
+                <br/>
+              
+                <!-- <button class="btn btn-sm btn-white pull-right" ng-click="leftCtrl.indexMode = true">x</button> -->
+
+                <button ng-click="leftCtrl.addMore = false; leftCtrl.add(leftCtrl.item)" class="btn btn-sm btn-warning pull-right">Add</button>
+                <div class="m-b-10">
+                    <span>
+                        <a href="#" class="btn btn-white btn-sm" ng-click="leftCtrl.openModal()">Upload Image</a>
+                        <a ng-show="leftCtrl.showSuccess">success.</a>
+                    </span>
                 </div>
+
+            </div>
 
             <div ng-show="leftCtrl.profileView">
                 <span>
@@ -36,10 +51,11 @@
                     </td>
                     <td>
                         <button ng-click="leftCtrl.addFriend(friend)" class="btn btn-md btn-inverse" xstyle='margin-top:20px; width:60px; height:80px;'>
-                        +
+                            +
                         </button>
 
-                        <button ng-click="leftCtrl.deleteFriend(friend)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'> - </button>
+                        <button ng-click="leftCtrl.deleteFriend(friend)" class="btn btn-md btn-white" xstyle='margin-top:20px; width:60px; height:80px;'>
+                            - </button>
                     </td>
                 </tr>
             </table>
@@ -67,7 +83,7 @@
                     <label class="col-sm-2 control-label">Odometer</label>
                     <div class="col-sm-10">
                         <p class="form-control-static">
-                            {{leftCtrl.profile.coords.latitude}}, {{leftCtrl.profile.coords.longitude}} </p>
+                            {{leftCtrl.profile.odometer}} miles </p>
                     </div>
                 </div>
 
@@ -107,13 +123,14 @@
                 <div class="form-horizontal">
                     <button ng-click="leftCtrl.profileView = false" class="btn btn-md btn-white pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>
                         Back</button>
-                    <button ng-click="((leftCtrl.openChat = true) && (leftCtrl.profileView = false))" class="btn btn-md btn-warning pull-right" xstyle='margin-top:20px; width:60px; height:80px;'>Open Chat</button>
+                    <button ng-click="((leftCtrl.openChat = true) && (leftCtrl.profileView = false))" class="btn btn-md btn-warning pull-right"
+                        xstyle='margin-top:20px; width:60px; height:80px;'>Open Chat</button>
                 </div>
 
             </div>
         </div>
 
-        <div ng-show="leftCtrl.openChat"> 
+        <div ng-show="leftCtrl.openChat">
             <div class='page-header'>
                 <h4 class="title">Message Thread</h2>
             </div>
@@ -122,7 +139,7 @@
                     <div>
                         <!-- begin chats -->
                         <ul class="chats">
-                            <li ng-class="{'right': dtlCtrl.isCurrentUser(reply.profileId)}"  ng-repeat="reply in dtlCtrl.ticket.thread | orderBy: dateCreated">
+                            <li ng-class="{'right': dtlCtrl.isCurrentUser(reply.profileId)}" ng-repeat="reply in dtlCtrl.ticket.thread | orderBy: dateCreated">
                                 <span class="date-time">{{reply.dateCreated | date: 'short'}}</span>
                                 <a href="javascript:;" class="name">{{reply.profile.profileOverrides.name}}</a>
                                 <a href="javascript:;" class="image">
@@ -135,15 +152,20 @@
                             <li class="left">
                                 <span class="date-time">yesterday 11:23pm</span>
                                 <a href="javascript:;" class="name">Sowse Bawdy</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-12.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-12.jpg" />
+                                </a>
                                 <div class="message">
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit volutpat. Praesent mattis interdum arcu eu feugiat.
                                 </div>
                             </li>
                             <li class="right">
                                 <span class="date-time">08:12am</span>
-                                <a href="#" class="name"><span class="label label-primary">ADMIN</span> Me</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-13.jpg" /></a>
+                                <a href="#" class="name">
+                                    <span class="label label-primary">ADMIN</span> Me</a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-13.jpg" />
+                                </a>
                                 <div class="message">
                                     Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
                                 </div>
@@ -151,7 +173,9 @@
                             <li class="left">
                                 <span class="date-time">09:20am</span>
                                 <a href="#" class="name">Neck Jolly</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-10.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-10.jpg" />
+                                </a>
                                 <div class="message">
                                     Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                                 </div>
@@ -159,7 +183,9 @@
                             <li class="left">
                                 <span class="date-time">11:15am</span>
                                 <a href="#" class="name">Shag Strap</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-14.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-14.jpg" />
+                                </a>
                                 <div class="message">
                                     Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
                                 </div>
@@ -167,15 +193,20 @@
                             <li class="left">
                                 <span class="date-time">yesterday 11:23pm</span>
                                 <a href="javascript:;" class="name">Sowse Bawdy</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-12.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-12.jpg" />
+                                </a>
                                 <div class="message">
                                     Lorem ipsum dolor sit amet, consectetuer adipiscing elit volutpat. Praesent mattis interdum arcu eu feugiat.
                                 </div>
                             </li>
                             <li class="right">
                                 <span class="date-time">08:12am</span>
-                                <a href="#" class="name"><span class="label label-primary">ADMIN</span> Me</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-13.jpg" /></a>
+                                <a href="#" class="name">
+                                    <span class="label label-primary">ADMIN</span> Me</a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-13.jpg" />
+                                </a>
                                 <div class="message">
                                     Nullam posuere, nisl a varius rhoncus, risus tellus hendrerit neque.
                                 </div>
@@ -183,7 +214,9 @@
                             <li class="left">
                                 <span class="date-time">09:20am</span>
                                 <a href="#" class="name">Neck Jolly</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-10.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-10.jpg" />
+                                </a>
                                 <div class="message">
                                     Euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
                                 </div>
@@ -191,7 +224,9 @@
                             <li class="left">
                                 <span class="date-time">11:15am</span>
                                 <a href="#" class="name">Shag Strap</a>
-                                <a href="javascript:;" class="image"><img alt="" src="assets/img/user-14.jpg" /></a>
+                                <a href="javascript:;" class="image">
+                                    <img alt="" src="assets/img/user-14.jpg" />
+                                </a>
                                 <div class="message">
                                     Nullam iaculis pharetra pharetra. Proin sodales tristique sapien mattis placerat.
                                 </div>
