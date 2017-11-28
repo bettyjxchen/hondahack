@@ -2,3 +2,12 @@
     height: 700px;
 }
 
+.login-cover-bg.authentication-states-login_login-cover-bg {
+    opacity: 0.0;
+    filter: alpha(opacity=00);
+}
+
+#authLoginForm.authentication-states-login_bg-color {
+    background: transparent;
+}
+
