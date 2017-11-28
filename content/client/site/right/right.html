@@ -1,34 +1,38 @@
-<div ng-controller="rightBoxController as rb">
+<!-- <div ng-controller="rightBoxController as rb">
     <div class="panel panel-inverse">
         <div class="panel-heading">
             <h4 class="panel-title">Panel with Tabs</h4>
         </div>
     </div>
-</div>
+</div> -->
+
 <div ng-controller="sideNavController as sideCtrl">
+    <!-- Start of 1 -->
     <div class="panel panel-inverse">
-    <div class="panel-heading">
+        <div class="panel-heading">
             <h3 class="panel-title">
-                <a ng-click="sideCtrl.toggle() && !sideCtrl.isOpen" 
-                class="accordion-toggle accordion-toggle-styled collapsed" 
-                data-toggle="collapse" data-parent="#accordion" href="#collapseone">
+                <a ng-click="sideCtrl.toggle() && !sideCtrl.isOpen" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapseone">
                     <i class="fa fa-plus-circle pull-right"></i>
-                    Emergency
+                    Emergency Message
                 </a>
             </h3>
         </div>
-    <div id="collapseone" class="panel-collapse collapse">
+        <div id="collapseone" class="panel-collapse collapse">
             <div class="panel-body">
-                <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a></button><br/>
+                <button class="btn btn-sm btn-white" ng-click="sideCtrl.fuelMsg()">Fuel Message</a>
+                </button>
+                <br/>
                 <div ng-show="sideCtrl.isActive" style="color:#3A89BD">Emergency fuel message was sent successfully.</div>
-                
+                <br>
                 <div class="space-20"></div>
-                <button class="btn btn-sm btn-white" ng-click="sideCtrl.lostMsg()">Lost Message</a></button>
+                <button class="btn btn-sm btn-white" ng-click="sideCtrl.lostMsg()">Lost Message</a>
+                </button>
                 <div ng-show="sideCtrl.isLost" style="color:#3A89BD">Emergency lost message was sent successfully.</div>
             </div>
         </div>
-        </div>
     </div>
+<<<<<<< HEAD
     <div class="panel panel-inverse">
     <div class="panel-heading">
         <h3 class="panel-title">
@@ -54,41 +58,62 @@
 </div>
 
 <div class="panel panel-inverse">
+=======
+
+    <!-- Start of 2 -->
+    <div class="panel panel-inverse">
+>>>>>>> master
         <div class="panel-heading">
             <h3 class="panel-title">
-                <a class="accordion-toggle accordion-toggle-styled collapsed" 
-                data-toggle="collapse" data-parent="#accordion" href="#collapsethree">
+                <a ng-click="sideCtrl.toggletwo() && !sideCtrl.hide" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse"
+                    data-parent="#accordion" href="#collapsetwo">
                     <i class="fa fa-plus-circle pull-right"></i>
-                    Available parking
+                    Emergency Call
                 </a>
             </h3>
         </div>
+<<<<<<< HEAD
     <div id="collapsethree" class="panel-collapse collapse">
             <div class="panel-body" ng-repeat="name in sideCtrl.parking">
                 <p>StreetName: {{name.street}}</p>>
+=======
+        <div id="collapsetwo" class="panel-collapse collapse">
+            <div class="panel-body">
+                <button class="btn btn-sm btn-danger" ng-click="sideCtrl.emergencyActive = true">Call #911</button>
+                <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.emergencyActive = false; sideCtrl.frenCallActive = false">Cancel</button>
+                <br>
+                <div ng-show="sideCtrl.emergencyActive" style="color:#3A89BD">
+                    <span>Alerting officials nearby....</span>
+                </div>
+
+                <br>
+                <div class="space-30"></div>
+
+                <button class="btn btn-sm btn-danger" ng-click="sideCtrl.frenCallActive = true"> Call Friend</button>
+                <div ng-show="sideCtrl.frenCallActive" style="color:#3A89BD">Dialing kenny...</div>
+>>>>>>> master
             </div>
         </div>
-        </div>
     </div>
-<!--<div ng-controller="rightBoxController as rb">
-    <div class="panel panel-inverse" style="height: 500px;">
+
+    <!-- Start of 3 -->
+    <div class="panel panel-inverse">
         <div class="panel-heading">
-            <h4 class="panel-title">Panel with Tabs</h4>
+            <h3 class="panel-title">
+                <a class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsethree">
+                    <i class="fa fa-plus-circle pull-right"></i>
+                    Parking
+                </a>
+            </h3>
         </div>
-        <div class="panel-body">
-            <table class="table table-hover">
-                <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" xui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">faq</h3>
-                    </td>
-                </tr>
-                <tr class="well" style="cursor: pointer;" xng-repeat="friend in leftCtrl.friendsList track by $index" ui-sref="">
-                    <td>
-                        <h3 xstyle="margin-top:40px;">Emergency</h3>
-                    </td>
-                </tr>
-                </tbody>
-                <table>
+        <div id="collapsethree" class="panel-collapse collapse">
+            <div class="panel-body">
+                <button class="btn btn-sm btn-default" ng-click="sideCtrl.isParkingShown = true">Search Nearby Parking</button>
+                <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false">Clear</button>
+                </br>
+                <div ng-show="sideCtrl.isParkingShown" style="color:#3A89BD">Retrieving locations...</div>
+                <div class="space-30"></div>
+            </div>
         </div>
     </div>
-</div> -->
+</div>
