@@ -4,13 +4,15 @@
     angular.module('client.site')
         .controller('mapController', MapControllerFunction)
 
-    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady', '$rootScope']
+    MapControllerFunction.$inject = ['uiGmapGoogleMapApi', 'uiGmapIsReady', '$rootScope','$http']
 
-    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady, $rootScope) {
+    function MapControllerFunction(uiGmapGoogleMapApi, uiGmapIsReady, $rootScope, $http) {
         var vm = this
         vm.markers = []
         vm.map = {}
         vm.results = []
+        vm.collisionData
+        vm.collisionOverlay = _collisionOverlay
 
         init()
 
@@ -177,7 +179,12 @@
                     streetViewControl: false,
                     draggable: true,
                     styles: styleArrays
-                }
+                },
+                visualization:{
+                    HeatmapLayer:{
+                        data:vm.collisionData
+                        }
+                    }
             }
             var goldStar = {
                 path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
@@ -216,6 +223,34 @@
                         })
                     })
                 })
+                $http.get('http://geohub.lacity.org/datasets/4ba1b8fa8d8946348b29261045298a88_0.geojson')
+                .then(data=>{
+                    let crashData=data.data.features
+                    let crashDataArray =[]
+                    for(var i=0;i<crashData.length;i++){
+                        for(var j=0; j < crashData[i].geometry.coordinates.length;j++){
+                            let long = crashData[i].geometry.coordinates[j][0]
+                            let lat = crashData[i].geometry.coordinates[j][1]
+                            let longMax = -118.229395
+                            let longMin = -118.309175
+                            let latMax = 34.069944
+                            let latMin = 34.011244
+                        if(crashData[i].geometry.coordinates.length > 100){
+                            if(long < longMax && long > longMin && lat < latMax && lat > latMin){
+                                crashDataArray.push(new google.maps.LatLng(lat, long))
+                            }
+                        }
+
+                        }
+                    }
+
+                    vm.collisionData =  crashDataArray
+                })
+
+        }
+        function _collisionOverlay(){
+            heatmap.setMap(vm.map)
+            
         }
 
         function addFriend(friend) {
