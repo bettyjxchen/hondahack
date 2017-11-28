@@ -11,10 +11,13 @@
         vm.markers = []
         vm.map = {}
         vm.results = []
+        
 
         init()
 
         function init() {
+            
+            
             $rootScope.$on('addFriend', (e, friend) => {
                 addFriend(friend)
             })
@@ -189,6 +192,24 @@
                     console.log(instances[0].map);
                 })
                 .then(() => {
+                    vm.markers.push(vm.myLocationData ={
+                        name: "My Location",
+                        profilePic: "https://www.shareicon.net/data/128x128/2015/11/12/163575_man_256x256.png",
+                        id: 0,
+                        coords: {
+                            latitude: 34.0403,
+                            longitude: -118.2696
+                        },
+                        options: {
+                            labelClass: 'marker_labels',
+                            labelAnchor: '12 60',
+                            labelContent: 'my location',
+                            icon:{
+                                path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+                                scale: 5
+                            }
+                        }
+                    })
                     vm.results.forEach(function (item, i) {
                         vm.markers.push({
                             id: Date.now() + i,
