@@ -231,11 +231,10 @@
                             let longMin = -118.309175
                             let latMax = 34.069944
                             let latMin = 34.011244
-                        if(crashData[i].geometry.coordinates.length > 15){
+                       
                             if(long < longMax && long > longMin && lat < latMax && lat > latMin){
                                 crashDataArray.push(new google.maps.LatLng(lat, long))
                             }
-                        }
 
                         }
                     }
@@ -249,20 +248,19 @@
             
             let map = new google.maps.Map(document.getElementById('map'), {
               center: downtown,
-              zoom: 12,
+              zoom: 14,
               options: {
                 scrollwheel: false,
                 streetViewControl: false,
                 draggable: true,
                 styles: styleArrays
-            },
-              mapTypeId: 'satellite'
+            }
+            
             });
             
             var heatmap = new google.maps.visualization.HeatmapLayer({
               data: vm.collisionData
             });
-            console.log(map)
             heatmap.setMap(map)
             
         }
