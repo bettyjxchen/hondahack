@@ -1,21 +1,20 @@
 <div ng-controller="footerController as fc">
-<nav class="navbar navbar-inverse" style="position: absolute;left: 0;bottom: 0;height: 100px;width: 100%;overflow:hidden;">
-    <div style="padding-top:50px" class="navbar-header">
-        <p>HondAssist
-            <br>
-            <small>&copy;All Rights Reserved 2018</small>
-        </p>
-    </div>
-
-    <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-    <ul class="nav navbar-nav">
-        <li>
+    <nav ng-hide="fc.toggle" ng-click="fc.toggle = !fc.toggle;"ng-model="gc.footer"class="navbar navbar-inverse bg-black-darker" style="position:fixed;left: 0;bottom: 0;height: 75px;width: 100%;overflow:hidden;margin-bottom:0px;">
+        <div style="padding-top:20px" class="navbar-header">
+            <p>HondAssist
+                <br>
+                <small>&copy;All Rights Reserved 2018</small>
+            </p>
             <button ng-click="fc.openModal()"></button>
-            <button ng-click="fc.openModalOne()"></button>
-           
-        </li>
-    </ul>
-</nav>
+        </div>
 
+
+    </nav>
+
+
+    <div ng-show="fc.toggle" ng-click="fc.toggle = !fc.toggle;"style="height:25%; margin-top:-20px;text-align:center;margin-bottom:0px"class="alert alert-warning alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong style="font-size:30px;"><i class="fa fa-exclamation-circle"></i>&nbsp;Warning!</strong> &nbsp;&nbsp;&nbsp; <span style="font-size:30px;"> Entering High Injury Zone-- Watch for Pedestrians and Cyclists!</span>
+    </div>
 
 </div>
