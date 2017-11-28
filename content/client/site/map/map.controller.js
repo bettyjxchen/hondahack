@@ -20,9 +20,31 @@
                 addFriend(friend)
             })
 
-            // $rootScope.$on('addParking', (e, parkingArray) => {
-            //     addParking(parkingArray)
-            // })
+            $rootScope.$on('addParking', (e, parkingArray) => {
+                parkingArray.forEach(function (item, i) {
+                    vm.markers.push({
+                        id: Date.now() + i,
+                        coords: {
+                            latitude: item.Latitude,
+                            longitude: item.Longitude
+                        },
+                        CityName: item.CityName,
+                        options: {
+                            labelClass: 'marker_labels',
+                            labelAnchor: '12 30',
+                            labelContent: item.CityName,
+                            icon: {
+                                path: google.maps.SymbolPath.CIRCLE,
+                                fillColor: 'black',
+                                fillOpacity: 0.8,
+                                scale: 8,
+                                strokeColor: 'white',
+                                strokeWeight: 3
+                            }
+                        }
+                    })
+                })
+            })
 
             $rootScope.$on('deleteFriend', (e, friend) => {
                 console.log(friend)
@@ -215,7 +237,7 @@
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
                                     fillColor: 'black',
-                                    fillOpacity: 0.8,                                    
+                                    fillOpacity: 0.8,
                                     scale: 8,
                                     strokeColor: 'white',
                                     strokeWeight: 3
@@ -230,7 +252,7 @@
             friend.options.icon = {
                 path: google.maps.SymbolPath.CIRCLE,
                 fillColor: 'black',
-                fillOpacity: 0.8,                                    
+                fillOpacity: 0.8,
                 scale: 8,
                 strokeColor: 'white',
                 strokeWeight: 3

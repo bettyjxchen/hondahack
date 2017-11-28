@@ -1,6 +1,6 @@
-<div ng-controller="sideNavController as sideCtrl">
-    <div class="panel panel-default" style="height:700px;">
-        <div class="panel-heading">
+<div ng-controller="rightBoxController as sideCtrl">
+    <div class="panel panel-default bg-silver-darker" style="height:700px;">
+        <div class="panel-heading bg-black-lighter">
             <h3 class="panel-title"></h3>
         </div>
         <div class="panel-body">
@@ -71,7 +71,7 @@
                 </div>
                 <div id="collapsethree" class="panel-collapse collapse">
                     <div class="panel-body">
-                        <button class="btn btn-sm btn-default" ng-click="sideCtrl.isParkingShown = true">Search Nearby Parking</button>
+                        <button class="btn btn-sm btn-default" ng-click="sideCtrl.getAllParking()">Search Nearby Parking</button>
                         <button class="btn btn-xs btn-inverse pull-right" ng-click="sideCtrl.isParkingShown = false">Clear</button>
                         </br>
                         <div ng-show="sideCtrl.isParkingShown" style="color:#3A89BD">Retrieving locations...</div>

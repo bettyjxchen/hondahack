@@ -4,28 +4,25 @@
     angular.module('client.site')
         .controller('rightBoxController', RightBoxController)
 
-    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal']
+    RightBoxController.$inject = ['$log', 'friendService', 'parkingRideService', '$uibModal','$rootScope']
 
-    function RightBoxController($log, friendService, parkingRideService, $uibModal) {
+    function RightBoxController($log, friendService, parkingRideService, $uibModal, $rootScope) {
         let vm = this
-
         vm.faqs = null
         vm.friendsList = null
         vm.$uibModal = $uibModal
         vm.openModalOne = _openModalOne
+        vm.getAllParking = _getAllParking
 
         init()
 
         function init() {
-            getAllParking()
-            debugger
-
             vm.emergencyMsg = _emergencyMsg;
             vm.fuelMsg = _fuelMsg;
             vm.lostMsg = _lostMsg;
             vm.showParking = _showParking
             vm.clearCalls = _clearCalls
-            vm.isParkingShown = MSFIDOCredentialAssertion
+            // vm.isParkingShown = MSFIDOCredentialAssertion
             //vm.emergency = _emergency;
             //vm.callriend = _callFriend;
             vm.toggle = _toggle;
