@@ -8,23 +8,64 @@
                 
             </div>
             <h3 ng-hide="leftCtrl.profileView">Friends</h3>
-            <div ng-show="leftCtrl.profileView">
+            <div ng-hide="leftCtrl.profileView">
                 <span>
                     <img style="width:30px; height:30px; cursor: pointer;" class="pull-right row" ng-src="{{leftCtrl.profile.profilePic}}">
                     <h3>{{leftCtrl.profile.name}}</h3>
                 </span>
             </div>
         </div>
-
+    
         <div ng-hide="leftCtrl.profileView" class="panel-body">
             <table class="table table-hover">
-                    <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" ng-click="leftCtrl.profileView(friend)">
+                    <tr class="well" style="cursor: pointer;" ng-repeat="friend in leftCtrl.friendsList track by $index" ng-click="leftCtrl.profileMode(friend)">
                         <td><img style="width:65px; height:65px;"ng-src="{{friend.profilePic}}"></td>
                         <td><h3 xstyle="margin-top:40px;">{{friend.name}}</h3></td>
                         <td><button ng-click="leftCtrl.addFriend(friend)" class="btn btn-lg"  xstyle='margin-top:20px; width:60px; height:80px;'>+</button></td>
                     </tr>
                 </tbody>
             <table>
+        </div>
+
+        <div> 
+            <div class='page-header'>
+                <h4 class="title">Message Thread</h2>
+            </div>
+            <div class="panel bg-silver-lighter">
+                <div class="crud-site-helpcenter-detail_chatPanel panel-body"  id="chatBox">
+                    <div>
+                        <!-- begin chats -->
+                        <ul class="chats">
+                            <li ng-class="{'right': dtlCtrl.isCurrentUser(reply.profileId)}" ng-init="dtlCtrl.scroll = $last" ng-repeat="reply in dtlCtrl.ticket.thread | orderBy: dateCreated">
+                                <span class="date-time">{{reply.dateCreated | date: 'short'}}</span>
+                                <a href="javascript:;" class="name">{{reply.profile.profileOverrides.name}}</a>
+                                <a href="javascript:;" class="image">
+                                    <img class="help-center_ticket-detail-profileImg" ng-src="{{reply.profile.profileOverrides.imageUrl}}">
+                                </a>
+                                <div class="message help-center_ticket-detail-reply">
+                                    <p ng-class="{'text-right': dtlCtrl.isCurrentUser(reply.profileId)}">{{reply.reply}}</p>
+                                </div>
+                            </li>
+                            <li class="m-t-0" id="bottom"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel-footer bg-silver">
+                    <p></p>
+                    <form name="dtlCtrl.replyForm" ng-submit="dtlCtrl.submitReply()" novalidate>
+                        <div class="input-group">
+                            <input type="text" name="reply" ng-model="dtlCtrl.formData.reply" rows="5" class="form-control bg-white" placeholder="Enter message"
+                                required>
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-theme pull-right" ng-disabled="dtlCtrl.replyForm.reply.$invalid">Reply
+                                    <i class="fa fa-paper-plane"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
