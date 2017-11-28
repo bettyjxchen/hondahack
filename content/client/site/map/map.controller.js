@@ -19,6 +19,10 @@
                 addFriend(friend)
             })
 
+            $rootScope.$on('deleteFriend', (e, index) => {
+                deleteFriend(index)
+            })
+
             vm.results = [
                 { "LMD_MP_Latitude": "34.0224", "LMD_MP_Longitude": "-118.2851", "name": "pam" },
                 { "LMD_MP_Latitude": "34.0718", "LMD_MP_Longitude": "-118.3608", "name": "sisi" },
@@ -26,104 +30,137 @@
             ]
             var styleArrays = [
                 {
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        },
+                        {
+                            "lightness": 13
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#144b53"
+                        },
+                        {
+                            "lightness": 14
+                        },
+                        {
+                            "weight": 1.4
+                        }
+                    ]
+                },
+                {
                     "featureType": "landscape",
+                    "elementType": "all",
                     "stylers": [
                         {
-                            "hue": "#FFBB00"
-                        },
-                        {
-                            "saturation": 43.400000000000006
-                        },
-                        {
-                            "lightness": 37.599999999999994
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "stylers": [
-                        {
-                            "hue": "#FFC200"
-                        },
-                        {
-                            "saturation": -61.8
-                        },
-                        {
-                            "lightness": 45.599999999999994
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.arterial",
-                    "stylers": [
-                        {
-                            "hue": "#FF0300"
-                        },
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 51.19999999999999
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.local",
-                    "stylers": [
-                        {
-                            "hue": "#FF0300"
-                        },
-                        {
-                            "saturation": -100
-                        },
-                        {
-                            "lightness": 52
-                        },
-                        {
-                            "gamma": 1
-                        }
-                    ]
-                },
-                {
-                    "featureType": "water",
-                    "stylers": [
-                        {
-                            "hue": "#0078FF"
-                        },
-                        {
-                            "saturation": -13.200000000000003
-                        },
-                        {
-                            "lightness": 2.4000000000000057
-                        },
-                        {
-                            "gamma": 1
+                            "color": "#08304b"
                         }
                     ]
                 },
                 {
                     "featureType": "poi",
+                    "elementType": "geometry",
                     "stylers": [
                         {
-                            "hue": "#00FF6A"
+                            "color": "#0c4152"
                         },
                         {
-                            "saturation": -1.0989010989011234
+                            "lightness": 5
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#0b434f"
                         },
                         {
-                            "lightness": 11.200000000000017
+                            "lightness": 25
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "color": "#0b3d51"
                         },
                         {
-                            "gamma": 1
+                            "lightness": 16
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#000000"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#146474"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#021019"
                         }
                     ]
                 }
@@ -135,7 +172,6 @@
                     longitude: -118.2697771
                 },
                 zoom: 12,
-                
                 options: {
                     scrollwheel: false,
                     streetViewControl: false,
@@ -143,7 +179,14 @@
                     styles: styleArrays
                 }
             }
-
+            var goldStar = {
+                path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+                fillColor: 'yellow',
+                fillOpacity: 0.8,
+                scale: 1,
+                strokeColor: 'gold',
+                strokeWeight: 14
+            };
             uiGmapIsReady.promise()
                 .then(instances => {
                     console.log(instances[0].map);
@@ -159,12 +202,16 @@
                             name: item['name'],
                             options: {
                                 labelClass: 'marker_labels',
-                                labelAnchor: '12 60',
+                                labelAnchor: '12 30',
                                 labelContent: item.name,
                                 icon: {
                                     path: google.maps.SymbolPath.CIRCLE,
-                                    scale: 5
-                                  },
+                                    fillColor: 'black',
+                                    fillOpacity: 0.8,                                    
+                                    scale: 8,
+                                    strokeColor: 'white',
+                                    strokeWeight: 3
+                                }
                             }
                         })
                     })
@@ -177,6 +224,11 @@
                 scale: 5
             }
             vm.markers.push(friend)
+            console.log(vm.markers)
+        }
+
+        function deleteFriend(index) {
+            vm.markers.splice(index, 1)
         }
 
 
